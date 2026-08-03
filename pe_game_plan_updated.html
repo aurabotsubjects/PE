@@ -377,7 +377,7 @@
 <main id="app"></main>
 <div id="printAllContainer" class="print-only"></div>
 
-<footer>Built from the Years 5/6 Game-Based PE Program plan · Soccer, Rippa Rugby, Netball, Basketball, Hockey, Volleyball, Cricket, Teeball &amp; Tennis units live, 20 lessons each</footer>
+<footer>Built from the Years 5/6 Game-Based PE Program plan · All twelve units live — Soccer, Rippa Rugby, Netball, Basketball, Hockey, Volleyball, Cricket, Teeball, Tennis, Team Play, Strategy &amp; Decision-Making, and Hand–Eye Coordination — 20 lessons each</footer>
 
 <script>
 /* ============ DATA ============ */
@@ -16123,6 +16123,1437 @@ const STRATEGY_LESSONS = [
   "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
  }
 ];
+
+const HANDEYE_BLOCK_INFO = {
+  1:{name:"Tracking & Catching", range:"Lessons 1–5", color:"var(--b1)", soft:"var(--b1-soft)", warmup:"Track & Toss Jog", warmdown:"Walk & Reach"},
+  2:{name:"Striking & Contact", range:"Lessons 6–10", color:"var(--b2)", soft:"var(--b2-soft)", warmup:"Strike Prep Shuffle", warmdown:"Partner Stretch"},
+  3:{name:"Reaction & Timing", range:"Lessons 11–15", color:"var(--b3)", soft:"var(--b3-soft)", warmup:"Quick Reaction Jog", warmdown:"Breathe & Balance"},
+  4:{name:"Combining Skills & Culmination", range:"Lessons 16–20", color:"var(--b4)", soft:"var(--b4-soft)", warmup:"Coordination Circuit Jog", warmdown:"Circle Stretch & Cheer"}
+};
+
+const HANDEYE_LESSONS = [
+ {
+  "n": 1,
+  "block": 1,
+  "title": "Eyes On It",
+  "focus": "Tracking an object with your eyes all the way into your hands",
+  "walt": "We are learning to watch a ball all the way into our hands, not look away early.",
+  "wilf": [
+   "keep my eyes on the ball right until it touches my hands",
+   "catch a gently thrown ball cleanly using both hands"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "1 soft/foam ball per pair, cones",
+  "safety": "Soft balls only for this early tracking work; standard spacing between pairs",
+  "games": [
+   {
+    "name": "Watch It In",
+    "desc": "In pairs, one gently underarm throws a soft ball while the partner calls out the colour/pattern on the ball just before it lands in their hands.",
+    "coach": "Say it as it lands, not before.",
+    "easier": "Bigger, brighter ball, thrown from closer.",
+    "harder": "Smaller ball, thrown from further away.",
+    "chaos": "Random fake throws (partner pretends to throw)"
+   },
+   {
+    "name": "Eyes Stay On",
+    "desc": "Standing in a circle, students pass a ball around while the teacher checks that eyes stay on the ball right up until it's caught, not on the thrower's face.",
+    "coach": "Follow the ball's whole flight path.",
+    "easier": "Slower, higher passes.",
+    "harder": "Faster, flatter passes.",
+    "chaos": "Teacher randomly calls 'switch direction'"
+   },
+   {
+    "name": "Catch & Freeze",
+    "desc": "In small groups, players throw and catch on the move, freezing in a strong catching position the instant they've secured the ball.",
+    "coach": "Freeze the moment it's in your hands.",
+    "easier": "Walking pace only.",
+    "harder": "Light jogging pace.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Track & Catch Tag",
+   "desc": "4v4 keep-away style game where a clean tracked catch (eyes visibly on the ball throughout) earns a bonus point on top of standard possession scoring."
+  },
+  "discussion": [
+   "What happened when you looked away from the ball too early?",
+   "How did getting your hands ready early change your catch?",
+   "What did a 'freeze' catch feel like compared to a rushed one?"
+  ],
+  "lookfors": [
+   "Keeps eyes on the ball right into the hands",
+   "Prepares hands early, in front of the body",
+   "Catches with relaxed, absorbing hands"
+  ],
+  "inclusion": "Use bigger, brighter, softer balls and slower throws for students building tracking confidence; allow two hands for every catch early on.",
+  "skillBreakdown": [
+   {
+    "step": "Watch the ball the whole way, right into your hands, not just until it's close.",
+    "why": "Looking away early is the single biggest reason a catch is dropped — the eyes need to finish the job the hands are about to do."
+   },
+   {
+    "step": "Get your hands ready and in front of your body before the ball arrives.",
+    "why": "Hands prepared early can adjust smoothly instead of stabbing late at a moving target."
+   },
+   {
+    "step": "Relax your hands rather than tensing up.",
+    "why": "Stiff hands bounce a ball away; relaxed hands absorb it."
+   }
+  ],
+  "value": "Aroha",
+  "valueText": "Being patient and encouraging with teammates whose skills or confidence look different from yours, and treating everyone with kindness whether the game is going well or not."
+ },
+ {
+  "n": 2,
+  "block": 1,
+  "title": "Soft Hands",
+  "focus": "Cushioning/absorbing the ball on catching rather than catching rigid",
+  "walt": "We are learning to catch with soft hands, giving a little as the ball arrives so it doesn't bounce away.",
+  "wilf": [
+   "let my hands 'give' slightly as I catch",
+   "catch without the ball bouncing out of my hands"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "1 ball per pair (variety of ball sizes), cones",
+  "safety": "Keep throws controlled and at a catchable height to avoid jammed fingers",
+  "games": [
+   {
+    "name": "Give and Catch",
+    "desc": "In pairs, one throws softly while the other practises pulling their hands back slightly on contact, exaggerating the 'give'.",
+    "coach": "Let it sink in, don't stop it dead.",
+    "easier": "Very soft, slow throws.",
+    "harder": "Firmer throws.",
+    "chaos": "Partner varies throw speed without warning"
+   },
+   {
+    "name": "Cup It",
+    "desc": "Students catch a range of different sized balls (small, medium, large) focusing on shaping their hands into a cup before each catch.",
+    "coach": "Shape your hands before it arrives, not after.",
+    "easier": "Same ball size each turn.",
+    "harder": "Ball size changes every throw.",
+    "chaos": "Mystery ball swap mid-round"
+   },
+   {
+    "name": "Bounce-Out Battle",
+    "desc": "In small groups, players count how many catches in a row they can make without the ball bouncing out of their hands, resetting the count if it does.",
+    "coach": "Soft hands beat a strong grab.",
+    "easier": "Slower pace, more time between catches.",
+    "harder": "Quicker succession of catches.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Soft Hands Showdown",
+   "desc": "4v2 keep-away where every clean, secure catch (no bounce-out) scores a bonus point, on top of possession scoring."
+  },
+  "discussion": [
+   "What did 'giving' with the catch actually feel like?",
+   "Did cupping your hands change how secure the catch felt?",
+   "What happened when you tried to catch with stiff or flat hands?"
+  ],
+  "lookfors": [
+   "Hands give slightly on contact",
+   "Hands cupped before the ball arrives",
+   "Ball is secured against the body after catching"
+  ],
+  "inclusion": "Use larger, softer balls for students still building grip confidence; allow extra attempts without penalty while the 'give' technique develops.",
+  "skillBreakdown": [
+   {
+    "step": "Let your hands move slightly backward as the ball arrives, absorbing its speed.",
+    "why": "Giving with the catch spreads out the force so the ball settles instead of bouncing off stiff hands."
+   },
+   {
+    "step": "Cup your hands rather than holding them flat.",
+    "why": "A cupped shape matches the ball better and stops it slipping straight through."
+   },
+   {
+    "step": "Bring the ball in toward your body once it's caught.",
+    "why": "Securing it against your body locks the catch in, especially under any pressure."
+   }
+  ],
+  "value": "Mōhio",
+  "valueText": "Understanding your own strengths and how you fit into the team, and noticing what your teammates need from you in order to do their best."
+ },
+ {
+  "n": 3,
+  "block": 1,
+  "title": "Two Hands or One?",
+  "focus": "Choosing appropriate catching technique (two-handed vs one-handed) for the situation",
+  "walt": "We are learning when to use two hands and when one hand is needed to catch successfully.",
+  "wilf": [
+   "use two hands when I have time to get in position",
+   "reach and catch with one hand when the ball is out of two-hand range"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls, cones, bibs",
+  "safety": "Standard spacing; controlled throw heights when practising one-handed reaching catches",
+  "games": [
+   {
+    "name": "Two Hands First",
+    "desc": "In pairs, receivers must get their whole body in line and use two hands whenever the throw is within easy reach.",
+    "coach": "Move your feet, not just your hands.",
+    "easier": "Throws always within easy reach.",
+    "harder": "Occasional throws just out of easy reach to test judgement.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Just Out of Reach",
+    "desc": "Partner throws balls slightly wide so the receiver must judge whether to stretch with one hand or step to use two.",
+    "coach": "Choose the option that actually gets the ball.",
+    "easier": "Throws only slightly wide.",
+    "harder": "Throws further out, requiring a genuine reach decision.",
+    "chaos": "Mixed easy and hard throws in the same set"
+   },
+   {
+    "name": "Call It",
+    "desc": "Before each throw, the receiver calls 'two' or 'one' based on where they think the ball will arrive, then attempts the catch.",
+    "coach": "Trust your first read.",
+    "easier": "Thrower signals direction early.",
+    "harder": "No warning given.",
+    "chaos": "Thrower occasionally fakes direction"
+   }
+  ],
+  "big": {
+   "name": "Catch Call",
+   "desc": "Small-sided keep-away game where players earn a bonus point for correctly judging and executing either a two-handed or one-handed catch based on the ball's position."
+  },
+  "discussion": [
+   "How did you decide between one hand and two?",
+   "When did a one-handed catch actually save the play?",
+   "What happens if you always try to catch with just one hand?"
+  ],
+  "lookfors": [
+   "Uses two hands by default when there's time",
+   "Reaches with one hand only when genuinely needed",
+   "Recovers into a balanced position after catching"
+  ],
+  "inclusion": "Allow two-handed catches for every attempt for students still building confidence; introduce one-handed reaching only once two-handed catching is secure.",
+  "skillBreakdown": [
+   {
+    "step": "Use two hands whenever you have time to get into position.",
+    "why": "Two hands give the most secure, reliable catch, so they're the default whenever possible."
+   },
+   {
+    "step": "Reach with one hand only when the ball is genuinely out of two-hand range.",
+    "why": "A one-handed reach should be a last resort for distance, not a shortcut when two hands were available."
+   },
+   {
+    "step": "Recover quickly into a balanced position after a one-handed catch.",
+    "why": "A one-handed catch is only useful if you can do something with the ball straight afterwards."
+   }
+  ],
+  "value": "Manaaki",
+  "valueText": "Looking after your teammates' success as much as your own — including, encouraging, and setting others up to succeed."
+ },
+ {
+  "n": 4,
+  "block": 1,
+  "title": "High and Low",
+  "focus": "Adjusting hands and body position to different flight heights (high balls, low balls, bouncing balls)",
+  "walt": "We are learning to adjust our hands and body to catch balls that arrive high, low, or bouncing.",
+  "wilf": [
+   "adjust my hand position for a high, low, or bouncing ball",
+   "get my body behind the ball whenever I can"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls, cones",
+  "safety": "Standard spacing; keep bouncing-ball throws controlled so they don't bounce into other groups",
+  "games": [
+   {
+    "name": "High or Low",
+    "desc": "Partner throws a mix of high, chest-height, and low balls, and the receiver adjusts hand shape each time.",
+    "coach": "Match your hands to where it's arriving.",
+    "easier": "Clearly high or clearly low throws only.",
+    "harder": "Throws close to shoulder or waist height, harder to judge.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Bounce Read",
+    "desc": "In pairs, one bounces the ball to the other, who must track it all the way through the bounce before catching.",
+    "coach": "Watch it hit the ground, not just before.",
+    "easier": "One controlled bounce, close range.",
+    "harder": "Varying bounce height and angle.",
+    "chaos": "Occasional double-bounce thrown in"
+   },
+   {
+    "name": "Body Behind It",
+    "desc": "Small group game where receivers must move their feet to get their whole body behind the ball's line before catching, rather than reaching sideways.",
+    "coach": "Feet first, then hands.",
+    "easier": "Slower-moving balls, more time to adjust.",
+    "harder": "Quicker, more varied throws.",
+    "chaos": "Role rotation every minute"
+   }
+  ],
+  "big": {
+   "name": "All Heights",
+   "desc": "4v4 small-sided game where a mix of high, low, and bounced passes are all in play, with a bonus point for a clean, well-adjusted catch at any height."
+  },
+  "discussion": [
+   "How did your hands change shape for a high ball compared to a low one?",
+   "What did tracking a bounce all the way through actually look like?",
+   "Why does getting your body behind the ball help, even if your hands don't catch it cleanly?"
+  ],
+  "lookfors": [
+   "Adjusts hand shape to match ball height",
+   "Moves feet to get body behind the ball",
+   "Tracks a bouncing ball all the way through the bounce"
+  ],
+  "inclusion": "Start with clearly high or clearly low throws before mixing heights; allow a short pause before each throw for students still building this judgement.",
+  "skillBreakdown": [
+   {
+    "step": "Turn your hands to match the height of the ball — fingers up for high balls, fingers down for low ones.",
+    "why": "Hand shape needs to match the ball's approach angle, or it simply won't be secure."
+   },
+   {
+    "step": "Get your body behind the ball's line whenever possible.",
+    "why": "A body positioned behind the ball gives a second chance to control it even if the hands don't get it clean."
+   },
+   {
+    "step": "Watch a bouncing ball all the way through the bounce, not just before it.",
+    "why": "A bounce changes the ball's path, so tracking has to continue through it, not stop beforehand."
+   }
+  ],
+  "value": "Pānga",
+  "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
+ },
+ {
+  "n": 5,
+  "block": 1,
+  "title": "Catch It All",
+  "focus": "Combining tracking, soft hands, catch-type choice, and height adjustment (Block 1 wrap-up)",
+  "walt": "We are learning to bring together everything from this week — tracking, soft hands, and adjusting to height — into confident catching.",
+  "wilf": [
+   "use tracking, soft hands, and the right catch type together",
+   "catch confidently across a range of heights and speeds"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls (various sizes), bibs, cones — combined equipment from Block 1 games for the wrap-up carousel",
+  "safety": "Standard spacing; combined activities revisited at a controlled pace",
+  "games": [
+   {
+    "name": "Coordination Carousel",
+    "desc": "Teams rotate through short stations that each revisit a Block 1 focus — tracking, soft hands, catch-type choice, height adjustment.",
+    "coach": "Use everything you've practised this week.",
+    "easier": "Longer time per station.",
+    "harder": "Shorter time, quicker rotation.",
+    "chaos": "Head-to-head mirror"
+   },
+   {
+    "name": "Mixed Bag Catching",
+    "desc": "In pairs, throws vary randomly in height, speed, and distance so the receiver must combine all of this week's skills on every catch.",
+    "coach": "Read it fresh every time.",
+    "easier": "Predictable pattern of throws.",
+    "harder": "Fully randomised throws.",
+    "chaos": "Caller occasionally shouts a trick instruction ('clap first!')"
+   },
+   {
+    "name": "Streak Catch",
+    "desc": "Small groups count their longest run of clean, confident catches in a row, mixing heights and speeds.",
+    "coach": "Stay relaxed, don't rush.",
+    "easier": "Slower pace, generous spacing.",
+    "harder": "Quicker pace, tighter spacing.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Catch It All Games",
+   "desc": "Small-sided matches where teams earn a bonus point for clean, confident catches across a range of heights and speeds, wrapping up the whole block."
+  },
+  "discussion": [
+   "Which of this week's catching skills do you feel most confident with now?",
+   "What did combining all of them together feel like today?",
+   "What's still tricky when the ball comes in fast or awkward?"
+  ],
+  "lookfors": [
+   "Combines tracking, soft hands, and correct catch type together",
+   "Adjusts confidently across a range of heights",
+   "Stays relaxed and ready between catches"
+  ],
+  "inclusion": "Allow students to nominate their own 'easier' or 'harder' station variant based on confidence; celebrate streaks of any length to build confidence going into Block 2.",
+  "skillBreakdown": [
+   {
+    "step": "Trust the tracking, soft hands, and height-adjustment skills you've built this week, all at once.",
+    "why": "A confident catch isn't one skill — it's several skills happening together without having to think about each one separately."
+   },
+   {
+    "step": "Choose the right catch type instantly, without pausing to decide.",
+    "why": "By this point the decision between one or two hands should be fast and automatic, not a hesitation."
+   },
+   {
+    "step": "Stay relaxed and ready between catches, not just during them.",
+    "why": "Good catchers are ready before the ball arrives, not scrambling once it does."
+   }
+  ],
+  "value": "Aroha",
+  "valueText": "Being patient and encouraging with teammates whose skills or confidence look different from yours, and treating everyone with kindness whether the game is going well or not."
+ },
+ {
+  "n": 6,
+  "block": 2,
+  "title": "Meet the Ball",
+  "focus": "Watching the ball onto the striking surface (bat, hand, paddle) before making contact",
+  "walt": "We are learning to watch the ball all the way onto our striking surface before we hit it.",
+  "wilf": [
+   "keep my eyes on the ball right until contact",
+   "make clean contact more often than I miss"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Soft bats/paddles or hands, soft balls, cones",
+  "safety": "Spacing between pairs so swings don't connect with a neighbouring group; soft balls only",
+  "games": [
+   {
+    "name": "Watch It Meet",
+    "desc": "In pairs, one gently feeds a soft ball for the other to strike with an open hand or soft paddle, calling out the ball's colour just before contact.",
+    "coach": "Say it right as you hit it.",
+    "easier": "Slower, closer feeds.",
+    "harder": "Faster, further feeds.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Early Swing",
+    "desc": "Students practise starting their swing or hand movement early, so it's already in motion before the ball arrives.",
+    "coach": "Start moving before it gets close.",
+    "easier": "Feeder gives a clear countdown.",
+    "harder": "No countdown given.",
+    "chaos": "Feeder varies timing of the feed"
+   },
+   {
+    "name": "Middle of the Ball",
+    "desc": "In small groups, students aim to strike the centre of a stationary or gently rolling ball, with feedback on where contact was made.",
+    "coach": "Picture the middle before you swing.",
+    "easier": "Stationary ball.",
+    "harder": "Slow rolling ball.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Clean Contact Challenge",
+   "desc": "Small-sided striking game (e.g. simple bat-and-ball or hand-strike format) where clean, centred contact earns a bonus point on top of standard scoring."
+  },
+  "discussion": [
+   "What happened when your eyes left the ball too early?",
+   "Did starting your swing earlier change how clean your contact was?",
+   "What did centre contact actually feel like compared to an edge hit?"
+  ],
+  "lookfors": [
+   "Eyes stay on the ball right until contact",
+   "Striking surface begins moving early",
+   "Contact is made near the centre of the ball"
+  ],
+  "inclusion": "Use larger, softer, slower-moving balls for students building striking confidence; allow a stationary ball to strike from before introducing movement.",
+  "skillBreakdown": [
+   {
+    "step": "Watch the ball all the way onto your striking surface, not just until you start swinging.",
+    "why": "Most mishits happen because the eyes leave the ball a fraction too early, right when accuracy matters most."
+   },
+   {
+    "step": "Get your striking surface (hand, bat, paddle) moving early so it's ready in time.",
+    "why": "A late-starting swing forces a rushed, inaccurate contact."
+   },
+   {
+    "step": "Aim for the middle of the ball, not the edges.",
+    "why": "Centre contact is what actually sends the ball where you intend."
+   }
+  ],
+  "value": "Mōhio",
+  "valueText": "Understanding your own strengths and how you fit into the team, and noticing what your teammates need from you in order to do their best."
+ },
+ {
+  "n": 7,
+  "block": 2,
+  "title": "Sweet Spot",
+  "focus": "Finding the centre/sweet spot of the striking surface for cleaner, more controlled contact",
+  "walt": "We are learning to find the sweet spot on our striking surface so our hits are cleaner and more controlled.",
+  "wilf": [
+   "make contact near the middle of my bat or hand",
+   "notice the difference between a sweet-spot hit and an edge hit"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Soft bats/paddles, soft balls, cones",
+  "safety": "Standard spacing between striking pairs; soft equipment only",
+  "games": [
+   {
+    "name": "Find the Spot",
+    "desc": "Students experiment striking a slow, gently fed ball at different points on their bat/paddle/hand, noticing where it feels and sounds cleanest.",
+    "coach": "Notice the difference, don't just swing.",
+    "easier": "Very slow, close feeds.",
+    "harder": "Slightly faster feeds.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Move to the Spot",
+    "desc": "In pairs, the feeder varies where the ball arrives slightly, and the striker must move their feet so the sweet spot meets the ball.",
+    "coach": "Move your feet to the ball, not your bat to a fixed spot.",
+    "easier": "Small variations in feed position.",
+    "harder": "Larger variations.",
+    "chaos": "Feeder calls 'freeze' — striker must adjust instantly"
+   },
+   {
+    "name": "Sound Check",
+    "desc": "Small groups strike in turn and call out 'clean' or 'edge' based on the sound and feel, checked against what the feeder saw.",
+    "coach": "Trust what you felt and heard.",
+    "easier": "Feeder confirms after every hit.",
+    "harder": "Feeder only confirms occasionally.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Sweet Spot Scoring",
+   "desc": "Small-sided striking game where clean, sweet-spot contact (spotted by the teacher or partner) earns bonus points on top of standard scoring."
+  },
+  "discussion": [
+   "What did the sweet spot actually feel or sound like compared to an edge hit?",
+   "How did moving your feet help you find the sweet spot more often?",
+   "What's one thing you'll try to fix about your contact next time?"
+  ],
+  "lookfors": [
+   "Identifies roughly where their sweet spot is",
+   "Moves feet to bring the sweet spot to the ball",
+   "Notices and describes clean versus mishit contact"
+  ],
+  "inclusion": "Use bigger striking surfaces (wider bats/paddles) for students still building contact consistency; allow extra feeds without penalty while this feel develops.",
+  "skillBreakdown": [
+   {
+    "step": "Know roughly where the sweet spot is on your bat, paddle, or hand.",
+    "why": "You can't aim for something you haven't identified — knowing the target is the first step."
+   },
+   {
+    "step": "Adjust your body position so the ball arrives at that sweet spot, not wherever it happens to land.",
+    "why": "Moving to the ball is more reliable than hoping the ball comes to a fixed swing."
+   },
+   {
+    "step": "Notice and describe the difference in feel and sound between a clean and a mishit strike.",
+    "why": "Recognising the feedback helps you self-correct without needing to be told every time."
+   }
+  ],
+  "value": "Manaaki",
+  "valueText": "Looking after your teammates' success as much as your own — including, encouraging, and setting others up to succeed."
+ },
+ {
+  "n": 8,
+  "block": 2,
+  "title": "Set Up Early",
+  "focus": "Getting body and hands/bat into position before contact (preparation and stance)",
+  "walt": "We are learning to set up our body and bat or hands early, before the ball arrives, not at the last second.",
+  "wilf": [
+   "get into a ready position before the ball is close",
+   "adjust my set-up if the ball's path changes"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Soft bats/paddles, soft balls, cones",
+  "safety": "Standard spacing; controlled feed speeds while set-up habits are being built",
+  "games": [
+   {
+    "name": "Ready Early",
+    "desc": "In pairs, the striker must be in a set, ready stance before the feeder releases the ball, checked by the feeder.",
+    "coach": "Be ready before I even let go.",
+    "easier": "Feeder gives a clear verbal countdown.",
+    "harder": "No countdown, feeder chooses their own moment.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Adjust and Strike",
+    "desc": "Feeder varies the ball's path slightly after release, and the striker must make a small last-moment adjustment to their set-up before striking.",
+    "coach": "Small adjustment, not a big scramble.",
+    "easier": "Small, gentle path changes.",
+    "harder": "Larger, later path changes.",
+    "chaos": "Feeder occasionally fakes a path change"
+   },
+   {
+    "name": "Balanced and Ready",
+    "desc": "Small groups practise moving between drills while returning to a balanced, ready stance each time before the next feed.",
+    "coach": "Light feet, balanced base.",
+    "easier": "More time between feeds.",
+    "harder": "Quicker succession of feeds.",
+    "chaos": "Role rotation every minute"
+   }
+  ],
+  "big": {
+   "name": "Set-Up Success",
+   "desc": "Small-sided striking game where being visibly set up and ready before each ball arrives earns a bonus point, on top of standard scoring for clean contact."
+  },
+  "discussion": [
+   "What difference did being ready early make to your contact?",
+   "How did you adjust your set-up when the ball's path changed?",
+   "What does a balanced, ready stance actually feel like?"
+  ],
+  "lookfors": [
+   "Gets into a ready stance before the ball is close",
+   "Makes small adjustments as the ball's path becomes clear",
+   "Stays balanced and light on their feet"
+  ],
+  "inclusion": "Give extra verbal cues ('ready... ready... now') for students still building early set-up habits; allow more time between feeds in early rounds.",
+  "skillBreakdown": [
+   {
+    "step": "Get into a ready stance the moment you know the ball is coming, not once it's already close.",
+    "why": "A rushed, last-second set-up rarely produces clean contact — early preparation gives your body time to adjust."
+   },
+   {
+    "step": "Keep adjusting your set-up as the ball's path becomes clearer.",
+    "why": "The first read isn't always perfect, so small adjustments as the ball approaches keep you lined up."
+   },
+   {
+    "step": "Stay balanced and light on your feet in your ready position.",
+    "why": "A balanced stance lets you move quickly in any direction once you know exactly where the ball is going."
+   }
+  ],
+  "value": "Pānga",
+  "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
+ },
+ {
+  "n": 9,
+  "block": 2,
+  "title": "Follow Through",
+  "focus": "Completing the strike smoothly with a full follow-through for control and accuracy",
+  "walt": "We are learning to follow all the way through our strike, not stop right at contact.",
+  "wilf": [
+   "continue my swing or hand motion smoothly after contact",
+   "notice how follow-through changes where the ball goes"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Soft bats/paddles, soft balls, cones",
+  "safety": "Extra spacing around each striker to allow for a full follow-through motion safely",
+  "games": [
+   {
+    "name": "Swing It Through",
+    "desc": "Students shadow-swing without a ball first, exaggerating a full, smooth follow-through, then add a gentle feed.",
+    "coach": "Keep going after you've hit it.",
+    "easier": "Shadow swings only, no ball at first.",
+    "harder": "Add ball feeds sooner.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Point the Target",
+    "desc": "In pairs, the striker aims their follow-through toward a cone target and checks whether the ball actually travelled that way.",
+    "coach": "Follow through toward where you're aiming.",
+    "easier": "Large, close target.",
+    "harder": "Smaller, further target.",
+    "chaos": "Target moved between turns"
+   },
+   {
+    "name": "Smooth Not Stopped",
+    "desc": "Small groups strike in turn, with a partner watching for a smooth, complete motion versus a stopped, chopped one.",
+    "coach": "Smooth all the way, not a stop-start.",
+    "easier": "Slower-paced feeds.",
+    "harder": "Quicker succession of feeds.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Follow-Through Focus",
+   "desc": "Small-sided striking game where a visibly smooth, complete follow-through toward the intended direction earns a bonus point."
+  },
+  "discussion": [
+   "What changed about your accuracy when you followed all the way through?",
+   "How did pointing your follow-through at a target help?",
+   "What did a 'stopped' swing feel like compared to a smooth one?"
+  ],
+  "lookfors": [
+   "Continues the motion smoothly through contact",
+   "Follow-through points toward the intended direction",
+   "Stays balanced through the whole swing"
+  ],
+  "inclusion": "Use shadow swings without a ball for students still building the full motion; allow a slower-paced feed while follow-through habits develop.",
+  "skillBreakdown": [
+   {
+    "step": "Continue your swing or hand motion smoothly through and past the point of contact.",
+    "why": "Stopping right at contact shortens control and often sends the ball off-target."
+   },
+   {
+    "step": "Point your follow-through toward where you want the ball to go.",
+    "why": "The direction of your follow-through is closely linked to the direction the ball actually travels."
+   },
+   {
+    "step": "Stay balanced through the whole motion, from set-up to follow-through.",
+    "why": "Losing balance partway through the swing undoes the accuracy that early preparation built."
+   }
+  ],
+  "value": "Aroha",
+  "valueText": "Being patient and encouraging with teammates whose skills or confidence look different from yours, and treating everyone with kindness whether the game is going well or not."
+ },
+ {
+  "n": 10,
+  "block": 2,
+  "title": "Strike It Clean",
+  "focus": "Combining watching the ball in, sweet-spot contact, early set-up, and follow-through (Block 2 wrap-up)",
+  "walt": "We are learning to bring together everything from this week — watching it in, sweet-spot contact, set-up, and follow-through — into a clean, confident strike.",
+  "wilf": [
+   "use set-up, contact, and follow-through together in one smooth strike",
+   "strike confidently and cleanly more often than not"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Soft bats/paddles, balls (various sizes), bibs, cones — combined equipment from Block 2 games for the wrap-up carousel",
+  "safety": "Standard spacing across the carousel, with extra room allowed for full follow-through swings",
+  "games": [
+   {
+    "name": "Strike Carousel",
+    "desc": "Teams rotate through short stations that each revisit a Block 2 focus — watching it in, sweet spot, set-up, follow-through.",
+    "coach": "Use everything you've practised this week.",
+    "easier": "Longer time per station.",
+    "harder": "Shorter time, quicker rotation.",
+    "chaos": "Head-to-head mirror"
+   },
+   {
+    "name": "Clean Strike Streak",
+    "desc": "In pairs, students count their longest run of clean, confident strikes in a row, combining all of this week's focuses.",
+    "coach": "One smooth thing, not four separate ones.",
+    "easier": "Slower, closer feeds.",
+    "harder": "Faster, more varied feeds.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Self-Check Strike",
+    "desc": "Students strike in small groups, briefly naming out loud which part of their strike felt strongest that turn.",
+    "coach": "Notice it, don't judge it.",
+    "easier": "Teacher offers prompts.",
+    "harder": "No prompts, own words only.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Strike It Clean Games",
+   "desc": "Small-sided striking matches where teams earn a bonus point for clean, well-combined strikes, wrapping up the whole block."
+  },
+  "discussion": [
+   "Which part of your strike — set-up, contact, or follow-through — feels strongest now?",
+   "What did combining all of them together feel like today?",
+   "What's one thing you'd still like to smooth out?"
+  ],
+  "lookfors": [
+   "Combines set-up, contact, and follow-through into one smooth strike",
+   "Strikes cleanly and confidently more often than not",
+   "Resets calmly after a mishit"
+  ],
+  "inclusion": "Allow students to nominate their own 'easier' or 'harder' station variant based on confidence; celebrate streaks of any length to build confidence going into Block 3.",
+  "skillBreakdown": [
+   {
+    "step": "Trust the watching-in, sweet-spot, set-up, and follow-through skills you've built this week, all together in one motion.",
+    "why": "A clean strike isn't separate steps — it's one smooth sequence once each part has been practised enough."
+   },
+   {
+    "step": "Notice which part of your strike is strongest and which still needs work.",
+    "why": "Recognising your own pattern is what lets you keep improving after this unit ends."
+   },
+   {
+    "step": "Stay relaxed and confident, even after a mishit.",
+    "why": "Tension after a miss usually causes the next strike to go wrong too — resetting calmly keeps your technique intact."
+   }
+  ],
+  "value": "Mōhio",
+  "valueText": "Understanding your own strengths and how you fit into the team, and noticing what your teammates need from you in order to do their best."
+ },
+ {
+  "n": 11,
+  "block": 3,
+  "title": "Quick Hands",
+  "focus": "Fast reaction catching / reflex response to a sudden or unpredictable object",
+  "walt": "We are learning to react quickly with our hands when a ball arrives suddenly or unexpectedly.",
+  "wilf": [
+   "react quickly to catch a suddenly thrown or dropped ball",
+   "stay ready rather than relaxed between reactions"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Small reaction balls or tennis balls, cones",
+  "safety": "Keep reaction throws close-range and gentle to avoid jammed fingers; standard spacing",
+  "games": [
+   {
+    "name": "Drop Catch",
+    "desc": "In pairs, one holds a ball at shoulder height and drops it without warning for the other to catch before it bounces twice.",
+    "coach": "React the instant it drops.",
+    "easier": "Verbal warning before dropping.",
+    "harder": "No warning at all.",
+    "chaos": "Occasional fake drop (hand moves, ball doesn't drop)"
+   },
+   {
+    "name": "Reaction Ball Rally",
+    "desc": "Using a small reaction ball (or tennis ball), partners toss it low and short with unpredictable bounces for the other to react and catch.",
+    "coach": "Stay light on your feet, ready to move either way.",
+    "easier": "Softer, more predictable tosses.",
+    "harder": "Livelier, less predictable tosses.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Quick Hands Circle",
+    "desc": "In a small circle, a ball is passed rapidly and randomly between players, rewarding fast, clean reactions.",
+    "coach": "Hands up and ready, always.",
+    "easier": "Slower pace, predictable order.",
+    "harder": "Faster pace, random order.",
+    "chaos": "Two balls introduced"
+   }
+  ],
+  "big": {
+   "name": "Reaction Relay",
+   "desc": "Small teams race through a series of quick-reaction catching challenges in relay format, with clean reactive catches earning points toward the team total."
+  },
+  "discussion": [
+   "What helped you react faster today — was it your position, your focus, or something else?",
+   "What happened when you tried to think about the catch instead of just reacting?",
+   "How did staying 'ready' between turns change your reaction time?"
+  ],
+  "lookfors": [
+   "Stays in a light, ready position between reactions",
+   "Reacts instantly rather than hesitating",
+   "Resets quickly and gets ready again"
+  ],
+  "inclusion": "Use larger, softer reaction balls and closer distances for students building reaction confidence; add clear warnings before drops or throws in early rounds.",
+  "skillBreakdown": [
+   {
+    "step": "Stay in a light, ready position between reactions, not fully relaxed.",
+    "why": "A body that's already alert reacts far faster than one that has to first 'wake up'."
+   },
+   {
+    "step": "React with your hands the instant you see the ball move, not after thinking about it.",
+    "why": "Overthinking a reaction slows it down — trust the instant response."
+   },
+   {
+    "step": "Reset quickly and get ready again straight after each reaction.",
+    "why": "Reaction drills often come in quick succession, so recovery speed matters as much as the reaction itself."
+   }
+  ],
+  "value": "Manaaki",
+  "valueText": "Looking after your teammates' success as much as your own — including, encouraging, and setting others up to succeed."
+ },
+ {
+  "n": 12,
+  "block": 3,
+  "title": "Read the Bounce",
+  "focus": "Predicting where a bouncing or deflecting object will arrive",
+  "walt": "We are learning to read how a ball bounces so we can predict where it will go next.",
+  "wilf": [
+   "predict roughly where a bounced ball will end up",
+   "move into position early based on that prediction"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls, cones marking a grid",
+  "safety": "Standard spacing; controlled bounce heights to avoid balls bouncing into other groups",
+  "games": [
+   {
+    "name": "Bounce Predictor",
+    "desc": "In pairs, one bounces the ball at varying angles while the other calls out and then moves to where they predict it will arrive.",
+    "coach": "Call it before you move, then check.",
+    "easier": "Straight, predictable bounces.",
+    "harder": "Angled, less predictable bounces.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Beat the Bounce",
+    "desc": "Small groups race to be first to reach and control a bounced ball after it's released from a height or angle.",
+    "coach": "Move on the read, not the bounce.",
+    "easier": "Ball bounced from a consistent spot.",
+    "harder": "Ball bounced from varying spots and angles.",
+    "chaos": "Fake bounce release (ball held, not released)"
+   },
+   {
+    "name": "Bad Bounce Recovery",
+    "desc": "Partners deliberately introduce an occasional unpredictable bounce (off a slight surface change or spin) and the receiver practises adjusting mid-read.",
+    "coach": "If it surprises you, adjust fast, don't freeze.",
+    "easier": "Bad bounces flagged in advance.",
+    "harder": "No warning given.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Read & React Bounce Game",
+   "desc": "Small-sided game incorporating bounced passes, where correctly predicting and reaching a bounce first earns a bonus point."
+  },
+  "discussion": [
+   "What told you where a bounce was going to end up?",
+   "How did moving early based on your prediction help?",
+   "What did you do when a bounce surprised you?"
+  ],
+  "lookfors": [
+   "Watches angle and speed before the bounce",
+   "Predicts and moves early rather than reacting late",
+   "Adjusts quickly when a bounce is unexpected"
+  ],
+  "inclusion": "Use straight, predictable bounces before introducing angled ones; allow extra thinking time in early rounds for students building this read.",
+  "skillBreakdown": [
+   {
+    "step": "Watch the angle and speed of the ball just before it bounces.",
+    "why": "Those two things — angle and speed — are what actually determine where a bounce will end up."
+   },
+   {
+    "step": "Predict roughly where the ball will arrive, then move there early.",
+    "why": "Reacting after the bounce is often too late — reading it beforehand buys you time."
+   },
+   {
+    "step": "Adjust your prediction if the bounce surface or spin surprises you.",
+    "why": "Not every bounce behaves exactly as expected, so staying ready to correct matters as much as the first read."
+   }
+  ],
+  "value": "Pānga",
+  "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
+ },
+ {
+  "n": 13,
+  "block": 3,
+  "title": "Time It Right",
+  "focus": "Timing a jump, swing, or reach to arrive exactly when the moving object does",
+  "walt": "We are learning to time our jump, swing, or reach so it arrives exactly when the ball does.",
+  "wilf": [
+   "time my movement to meet the ball, not too early or too late",
+   "adjust my timing if the ball's speed changes"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls, cones, soft bats/paddles (optional)",
+  "safety": "Standard spacing; controlled speeds while timing skills are still developing",
+  "games": [
+   {
+    "name": "Meet It There",
+    "desc": "In pairs, one throws at varying speeds while the other times a jump or reach to meet the ball at its highest or furthest point.",
+    "coach": "Start moving before it gets there.",
+    "easier": "Consistent, predictable speed.",
+    "harder": "Varying speed each throw.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Timed Strike",
+    "desc": "Using a soft bat or paddle, students time their swing to meet a gently rolled or tossed ball at exactly the right moment.",
+    "coach": "Swing to meet it, not to chase it.",
+    "easier": "Slower, closer feeds.",
+    "harder": "Faster, more varied feeds.",
+    "chaos": "Feeder occasionally changes speed mid-approach"
+   },
+   {
+    "name": "Speed Change Read",
+    "desc": "Partners vary a ball's speed unpredictably (fast, then slow) and the receiver must adjust their timing in real time.",
+    "coach": "Watch for the change, don't assume it stays the same.",
+    "easier": "Speed change signalled in advance.",
+    "harder": "No signal given.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Perfect Timing Game",
+   "desc": "Small-sided game where a well-timed jump, reach, or strike (arriving exactly with the ball) earns a bonus point on top of standard scoring."
+  },
+  "discussion": [
+   "What helped you judge the ball's speed early enough to time your movement?",
+   "What happened when you started your movement too early, or too late?",
+   "How did you adjust when the ball's speed changed unexpectedly?"
+  ],
+  "lookfors": [
+   "Judges speed early rather than reacting late",
+   "Times movement to arrive exactly with the ball",
+   "Adjusts timing when speed or path changes"
+  ],
+  "inclusion": "Use slower, more predictable speeds for students building timing confidence; allow a practice attempt before each scored turn.",
+  "skillBreakdown": [
+   {
+    "step": "Judge the ball's speed early so you can plan your timing, not just react at the last second.",
+    "why": "Good timing starts with an early read of speed — leaving it too late removes your ability to adjust."
+   },
+   {
+    "step": "Begin your jump, swing, or reach slightly before the ball arrives, so it's at full extension exactly on time.",
+    "why": "Movements take a moment to complete — starting too late means arriving after the ball has already gone."
+   },
+   {
+    "step": "Adjust your timing if the ball speeds up, slows down, or changes path.",
+    "why": "A single fixed plan doesn't work if the ball's behaviour changes — timing has to stay flexible."
+   }
+  ],
+  "value": "Aroha",
+  "valueText": "Being patient and encouraging with teammates whose skills or confidence look different from yours, and treating everyone with kindness whether the game is going well or not."
+ },
+ {
+  "n": 14,
+  "block": 3,
+  "title": "Under Pressure",
+  "focus": "Coordinating hand-eye skills while moving, being defended, or under time pressure",
+  "walt": "We are learning to keep our hand-eye coordination sharp even when we're moving, being defended, or under time pressure.",
+  "wilf": [
+   "catch or strike accurately even while moving",
+   "stay coordinated when a defender or the clock is adding pressure"
+  ],
+  "nzc": "Strand B, C",
+  "equipment": "Balls, bibs, cones",
+  "safety": "Standard spacing across simultaneous pairs/groups; clear rules to avoid unsafe contact when defenders are added",
+  "games": [
+   {
+    "name": "Catch on the Move",
+    "desc": "In pairs, one throws while the other jogs or moves laterally, catching without stopping their movement.",
+    "coach": "Keep your technique the same, just add movement.",
+    "easier": "Slower movement, easier throws.",
+    "harder": "Quicker movement, more varied throws.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Defended Catch",
+    "desc": "A light passive defender waves their arms nearby (without touching) while a pair practises catching, adding visual distraction pressure.",
+    "coach": "Focus on the ball, not the distraction.",
+    "easier": "Defender stands further away.",
+    "harder": "Defender stands close and active.",
+    "chaos": "Defender makes a surprise call-out"
+   },
+   {
+    "name": "Beat the Clock",
+    "desc": "Small groups attempt a set number of clean catches or strikes within a time limit, adding time pressure to the coordination task.",
+    "coach": "Fast hands, calm mind.",
+    "easier": "More time given.",
+    "harder": "Less time given.",
+    "chaos": "Time limit shortened without warning"
+   }
+  ],
+  "big": {
+   "name": "Pressure Game",
+   "desc": "Small-sided game combining light defensive pressure and quick tempo, where accurate hand-eye actions under this pressure earn bonus points."
+  },
+  "discussion": [
+   "What changed about your technique when pressure was added?",
+   "What helped you stay calm and accurate even while moving or defended?",
+   "How did you reset after a mistake made under pressure?"
+  ],
+  "lookfors": [
+   "Keeps technique consistent under pressure",
+   "Stays mentally calm even while moving quickly",
+   "Resets quickly after a pressured mistake"
+  ],
+  "inclusion": "Introduce pressure gradually — movement first, then light distraction, then time pressure — for students building coordination confidence.",
+  "skillBreakdown": [
+   {
+    "step": "Keep your technique the same under pressure as it was without it.",
+    "why": "Pressure tends to rush technique first — holding onto the basics is what keeps performance steady."
+   },
+   {
+    "step": "Slow your decision-making down mentally, even if your body is moving quickly.",
+    "why": "A calm mind inside a fast-moving body is what actually produces accurate hand-eye skills under pressure."
+   },
+   {
+    "step": "Accept that pressure will cause more mistakes than usual, and reset quickly.",
+    "why": "Expecting perfection under pressure adds unnecessary tension — a quick reset keeps you performing well overall."
+   }
+  ],
+  "value": "Mōhio",
+  "valueText": "Understanding your own strengths and how you fit into the team, and noticing what your teammates need from you in order to do their best."
+ },
+ {
+  "n": 15,
+  "block": 3,
+  "title": "Fast & Focused",
+  "focus": "Combining quick reactions, reading bounces, timing, and composure under pressure (Block 3 wrap-up)",
+  "walt": "We are learning to bring together everything from this week — quick hands, reading bounces, timing, and staying composed — into fast, focused coordination.",
+  "wilf": [
+   "react, read, and time my movements together under pressure",
+   "stay focused and composed even when things happen quickly"
+  ],
+  "nzc": "Strand B, C",
+  "equipment": "Balls, bibs, cones — combined equipment from Block 3 games for the wrap-up carousel",
+  "safety": "Standard spacing across the carousel and games; controlled pace for higher-pressure stations",
+  "games": [
+   {
+    "name": "Fast & Focused Carousel",
+    "desc": "Teams rotate through short stations that each revisit a Block 3 focus — quick hands, reading bounces, timing, composure under pressure.",
+    "coach": "Use everything you've practised this week.",
+    "easier": "Longer time per station.",
+    "harder": "Shorter time, quicker rotation.",
+    "chaos": "Head-to-head mirror"
+   },
+   {
+    "name": "Combined Pressure Challenge",
+    "desc": "In pairs or small groups, students complete a fast sequence combining a reaction catch, a bounce read, and a timed strike or reach, one after another.",
+    "coach": "One smooth sequence, not three separate stops.",
+    "easier": "Pause briefly between each part.",
+    "harder": "No pause, straight through.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Composure Check",
+    "desc": "Students complete short pressure challenges, briefly naming out loud how they stayed focused afterwards.",
+    "coach": "Notice what helped you stay calm.",
+    "easier": "Teacher offers prompts.",
+    "harder": "No prompts, own words only.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Fast & Focused Games",
+   "desc": "Small-sided matches combining reaction, timing, and light pressure, where teams earn a bonus point for staying accurate and composed throughout, wrapping up the whole block."
+  },
+  "discussion": [
+   "Which part of this week — reacting, reading, or timing — feels strongest now?",
+   "What helped you stay focused when things were happening quickly?",
+   "Looking back over this block, what's improved most in your coordination?"
+  ],
+  "lookfors": [
+   "Combines reaction, bounce-reading, and timing skills under pressure",
+   "Stays focused on the task rather than the pressure",
+   "Recovers quickly from mistakes"
+  ],
+  "inclusion": "Allow students to nominate their own 'easier' or 'harder' station variant based on confidence; model calm recovery language for students who are hard on themselves after a mistake.",
+  "skillBreakdown": [
+   {
+    "step": "Trust the reaction, bounce-reading, and timing skills you've built this week, all working together under pressure.",
+    "why": "Fast, focused coordination is these separate skills becoming automatic together, not something new."
+   },
+   {
+    "step": "Stay focused on the object itself, not on the pressure around it.",
+    "why": "Pressure is a distraction — the actual task (catching, striking, timing) hasn't changed, so the focus shouldn't either."
+   },
+   {
+    "step": "Recover quickly from any mistake and get ready for the next moment.",
+    "why": "Fast-paced coordination always includes some mistakes — what matters is getting back into a ready state immediately."
+   }
+  ],
+  "value": "Manaaki",
+  "valueText": "Looking after your teammates' success as much as your own — including, encouraging, and setting others up to succeed."
+ },
+ {
+  "n": 16,
+  "block": 4,
+  "title": "Hands & Feet Together",
+  "focus": "Combining hand-eye coordination with footwork and body movement",
+  "walt": "We are learning to combine our hand skills with good footwork, moving our whole body to support a catch or strike.",
+  "wilf": [
+   "move my feet to get into the right position before using my hands",
+   "combine footwork and hand skills smoothly in one action"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls, cones, bibs",
+  "safety": "Standard spacing; clear pathways for footwork drills to avoid collisions",
+  "games": [
+   {
+    "name": "Footwork First",
+    "desc": "In pairs, receivers must take at least two small adjusting steps to get into position before every catch.",
+    "coach": "Feet first, hands second.",
+    "easier": "Ball thrown closer, less movement needed.",
+    "harder": "Ball thrown wider, more movement needed.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Shuffle & Catch",
+    "desc": "Students shuffle sideways along a line of cones, catching a ball thrown at random points along the line.",
+    "coach": "Stay light on your feet the whole time.",
+    "easier": "Slower shuffle, predictable throw points.",
+    "harder": "Faster shuffle, random throw points.",
+    "chaos": "Thrower calls 'stop' — catch from a dead stop"
+   },
+   {
+    "name": "Move to Strike",
+    "desc": "Using a soft bat or paddle, students move their feet to get in line with a rolled or tossed ball before striking it.",
+    "coach": "Get your feet there before your bat does.",
+    "easier": "Ball rolled slowly, close range.",
+    "harder": "Ball rolled faster, wider range.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Whole-Body Game",
+   "desc": "Small-sided game where clean catches or strikes that clearly used good footwork to get into position earn a bonus point."
+  },
+  "discussion": [
+   "How did moving your feet first change your catching or striking?",
+   "What did small, quick steps feel like compared to one big lunge?",
+   "When did footwork and hands come together smoothly today?"
+  ],
+  "lookfors": [
+   "Moves feet into position before using hands",
+   "Takes small, quick adjusting steps",
+   "Combines footwork and hand action smoothly"
+  ],
+  "inclusion": "Reduce the distance balls are thrown/rolled for students still building footwork confidence; allow extra practice steps before each attempt.",
+  "skillBreakdown": [
+   {
+    "step": "Move your feet first to get your body into position, then let your hands finish the job.",
+    "why": "Good hand-eye actions are built on a base of good footwork — hands alone can only do so much."
+   },
+   {
+    "step": "Keep your steps small and quick rather than one big lunge.",
+    "why": "Small adjusting steps keep you balanced and ready to change direction if needed."
+   },
+   {
+    "step": "Combine the footwork and hand action into one smooth movement, not two separate steps.",
+    "why": "A pause between moving your feet and using your hands usually means you're already too late."
+   }
+  ],
+  "value": "Pānga",
+  "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
+ },
+ {
+  "n": 17,
+  "block": 4,
+  "title": "Multi-Skill Circuit",
+  "focus": "Combining catching, striking, and reaction skills across a rotating multi-station circuit",
+  "walt": "We are learning to apply catching, striking, and reaction skills across a range of different stations.",
+  "wilf": [
+   "apply the right hand-eye skill for each different station",
+   "move confidently between different types of hand-eye challenge"
+  ],
+  "nzc": "Strand B · Movement skills",
+  "equipment": "Balls (various sizes), soft bats/paddles, cones, bibs — set up as circuit stations",
+  "safety": "Clear station boundaries and rotation system; standard spacing at each station",
+  "games": [
+   {
+    "name": "Station Rotation Warm-Up",
+    "desc": "A quick rotation through three short stations (catching, striking, reaction) to warm into today's circuit format.",
+    "coach": "Get the feel of each station before we go full circuit.",
+    "easier": "Longer time per station.",
+    "harder": "Shorter time, quicker rotation.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Full Circuit Round 1",
+    "desc": "Students complete a full rotation through all circuit stations at a steady, controlled pace.",
+    "coach": "Bring your best technique to every station.",
+    "easier": "More time per station.",
+    "harder": "Less time per station.",
+    "chaos": "Head-to-head mirror between two groups on the same station"
+   },
+   {
+    "name": "Full Circuit Round 2",
+    "desc": "A second full rotation, with students aiming to beat their own personal result or streak from Round 1 at each station.",
+    "coach": "Try to beat your own number, not someone else's.",
+    "easier": "Same difficulty as Round 1.",
+    "harder": "Slightly increased difficulty at each station.",
+    "chaos": "Bonus objectives added to one station"
+   }
+  ],
+  "big": {
+   "name": "Circuit Challenge Game",
+   "desc": "Teams combine their circuit results into a team score, then play a short small-sided game applying whichever circuit skills come up naturally in play."
+  },
+  "discussion": [
+   "Which station felt strongest for you today, and which felt trickiest?",
+   "What did you carry over from one station to the next?",
+   "How did rotating between different challenges compare to practising just one thing?"
+  ],
+  "lookfors": [
+   "Applies the correct hand-eye skill at each different station",
+   "Transitions between stations calmly and quickly",
+   "Uses feedback from one station to improve at the next"
+  ],
+  "inclusion": "Allow flexible station order so students can build confidence at an easier station first; offer a buddy system for stations that involve reaction speed.",
+  "skillBreakdown": [
+   {
+    "step": "Recognise which hand-eye skill each station needs, and apply it.",
+    "why": "Different challenges need different specific skills — a strong coordinator can tell the difference and adjust."
+   },
+   {
+    "step": "Move between stations calmly and get ready quickly for the next challenge.",
+    "why": "A circuit works best when transitions are smooth, not rushed or chaotic."
+   },
+   {
+    "step": "Use feedback from one station to improve at the next.",
+    "why": "These are all connected skills — a fix noticed in one spot often carries straight over to the next."
+   }
+  ],
+  "value": "Aroha",
+  "valueText": "Being patient and encouraging with teammates whose skills or confidence look different from yours, and treating everyone with kindness whether the game is going well or not."
+ },
+ {
+  "n": 18,
+  "block": 4,
+  "title": "Game Ready",
+  "focus": "Applying hand-eye coordination skills inside a live, game-like context",
+  "walt": "We are learning to use our catching, striking, and reaction skills inside a real, flowing game, not just in isolated drills.",
+  "wilf": [
+   "apply hand-eye skills accurately while a game is flowing around me",
+   "stay coordinated even as the game gets faster or more chaotic"
+  ],
+  "nzc": "Strand B, C",
+  "equipment": "Balls, bibs, cones",
+  "safety": "Standard spacing across simultaneous games; agreed, fair self-officiating routines",
+  "games": [
+   {
+    "name": "Warm Into the Game",
+    "desc": "A shortened, simplified version of today's game format, letting players find their rhythm and reacquaint their hand-eye skills with live play.",
+    "coach": "Use this to settle in, not to win.",
+    "easier": "Longer warm-in time.",
+    "harder": "Shorter warm-in, straight into full games.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Call and Catch",
+    "desc": "In small-sided games, players must call for the ball clearly before receiving it, reinforcing communication alongside coordination.",
+    "coach": "Call early, then catch clean.",
+    "easier": "Slower-paced games.",
+    "harder": "Faster-paced games.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Bonus Skill Game",
+    "desc": "A small-sided game where a bonus point is awarded any time a player clearly demonstrates a specific hand-eye skill from earlier in the unit (a soft-hands catch, a clean strike, a well-timed reach).",
+    "coach": "Look for chances to use your best skills, not just any skill.",
+    "easier": "Teacher points out bonus moments.",
+    "harder": "Players self-identify bonus moments.",
+    "chaos": "Bonus objectives rotate mid-game"
+   }
+  ],
+  "big": {
+   "name": "Full Flowing Game",
+   "desc": "A complete small-sided game where students apply the whole range of hand-eye skills from across the unit inside genuine, fast-flowing play."
+  },
+  "discussion": [
+   "What was different about using these skills in a real game compared to a drill?",
+   "How did communicating with teammates help your coordination?",
+   "What happened to your coordination as the game got faster?"
+  ],
+  "lookfors": [
+   "Applies hand-eye skills accurately within live, flowing play",
+   "Stays coordinated as pace and chaos increase",
+   "Communicates clearly to support teammates' coordination"
+  ],
+  "inclusion": "Offer a simplified rule set or slower-paced group for students still building confidence in live-game coordination; celebrate effort and accurate attempts, not just successful outcomes.",
+  "skillBreakdown": [
+   {
+    "step": "Bring catching, striking, timing, and reaction skills into a live game setting, not just controlled drills.",
+    "why": "The real test of hand-eye coordination is whether it holds up once a game adds unpredictability and speed."
+   },
+   {
+    "step": "Stay coordinated even as the pace and chaos of the game increase.",
+    "why": "Games rarely happen at a nice, controlled drill pace — coordination has to hold up under real conditions."
+   },
+   {
+    "step": "Communicate clearly with teammates to support each other's coordination (calling for the ball, warning of a defender).",
+    "why": "Good communication makes everyone's hand-eye actions easier and more accurate."
+   }
+  ],
+  "value": "Mōhio",
+  "valueText": "Understanding your own strengths and how you fit into the team, and noticing what your teammates need from you in order to do their best."
+ },
+ {
+  "n": 19,
+  "block": 4,
+  "title": "Coordination Challenge",
+  "focus": "Team-based multi-skill challenge combining the whole unit as a trial run before the culminating games day",
+  "walt": "We are learning to combine every hand-eye skill from this unit into team challenges, as a trial run before tomorrow's games day.",
+  "wilf": [
+   "apply a range of hand-eye coordination skills together in a challenge",
+   "support my team's effort in a shared coordination challenge"
+  ],
+  "nzc": "Strand B, C",
+  "equipment": "Balls, soft bats/paddles, cones, bibs",
+  "safety": "Standard spacing across simultaneous team challenges; clear rotation system between challenge stations",
+  "games": [
+   {
+    "name": "Team Relay Challenge",
+    "desc": "Teams complete a relay combining a catch, a strike, and a reaction challenge in sequence, as a fun, competitive combination of the unit's skills.",
+    "coach": "Support your teammate as much as you focus on your own turn.",
+    "easier": "Simpler sequence, more time.",
+    "harder": "Longer sequence, less time.",
+    "chaos": "Head-to-head mirror between two teams"
+   },
+   {
+    "name": "Shared Streak Challenge",
+    "desc": "Teams work together to build the longest combined streak of clean catches or strikes across the whole team.",
+    "coach": "Everyone's turn matters to the total.",
+    "easier": "Slower pace, generous spacing.",
+    "harder": "Quicker pace, tighter spacing.",
+    "chaos": "n/a"
+   },
+   {
+    "name": "Skill Spotlight",
+    "desc": "Each team nominates one member to demonstrate their strongest hand-eye skill from the unit to the group, with brief peer feedback.",
+    "coach": "Pick your genuine strength, not just something easy.",
+    "easier": "Teacher or peers suggest a focus.",
+    "harder": "Student justifies their own choice.",
+    "chaos": "n/a"
+   }
+  ],
+  "big": {
+   "name": "Trial Challenge Games",
+   "desc": "Full team challenge combining relay, streak, and small-sided game elements, drawing on catching, striking, reacting, timing, and footwork from across the whole unit."
+  },
+  "discussion": [
+   "What part of your coordination are you most confident in going into tomorrow's games day?",
+   "Who supported their team really well in today's challenges?",
+   "What's one hand-eye skill you'd still like to work on?"
+  ],
+  "lookfors": [
+   "Combines a range of hand-eye skills together in team challenges",
+   "Supports the team's shared effort",
+   "Reflects honestly on personal strengths and areas to work on"
+  ],
+  "inclusion": "Match teams thoughtfully so challenges are competitive and enjoyable for everyone; offer flexible rules or equipment adjustments so every challenge remains genuinely achievable.",
+  "skillBreakdown": [
+   {
+    "step": "Combine catching, striking, reacting, timing, and footwork into connected team challenges.",
+    "why": "A real team challenge brings together everything the unit has built, often in quick succession — a genuine trial for tomorrow."
+   },
+   {
+    "step": "Support your team's shared effort, not just your own individual result.",
+    "why": "Many of today's challenges rely on the whole team's coordination, not one person's."
+   },
+   {
+    "step": "Reflect honestly on which parts of your coordination are strongest heading into the games day.",
+    "why": "Knowing your own strengths and areas to watch is what lets you play smart tomorrow, not just hard."
+   }
+  ],
+  "value": "Manaaki",
+  "valueText": "Looking after your teammates' success as much as your own — including, encouraging, and setting others up to succeed."
+ },
+ {
+  "n": 20,
+  "block": 4,
+  "title": "Hand-Eye Coordination Games Day",
+  "focus": "Culminating multi-game/challenge day celebrating hand-eye coordination across the whole unit",
+  "walt": "We are learning to apply the whole unit's hand-eye coordination skills in a games day setting, showing fair play and reflecting on our growth.",
+  "wilf": [
+   "apply a range of hand-eye coordination skills from across the unit in competitive challenges and games",
+   "play fairly and stay coordinated and confident throughout the games day"
+  ],
+  "nzc": "Strands A, B, C, D · all five Key Competencies",
+  "equipment": "Balls, soft bats/paddles, cones, bibs, simple rotation chart or draw sheet",
+  "safety": "Standard spacing across multiple simultaneous stations/games; clear rotation system",
+  "games": [
+   {
+    "name": "Skill Circuit Warm-Up",
+    "desc": "A quick circuit combining catching, striking, and reaction — a whistle-stop reminder of the whole unit before games begin.",
+    "coach": "Bring your best technique from across the unit into every touch.",
+    "easier": "Longer time per station.",
+    "harder": "Shorter time, quicker rotation.",
+    "chaos": "Head-to-head mirror, beat the clock"
+   },
+   {
+    "name": "Team Coordination Challenge",
+    "desc": "Before games begin, each team huddles briefly to agree one hand-eye skill they'll try to show off today.",
+    "coach": "Make it specific and meaningful to your team.",
+    "easier": "n/a",
+    "harder": "n/a",
+    "chaos": "Role rotation"
+   },
+   {
+    "name": "Coordination Spotlight",
+    "desc": "Throughout the games day, the teacher notices and briefly highlights one sharp piece of hand-eye coordination from each team to the whole group.",
+    "coach": "Notice good technique, not just good outcomes.",
+    "easier": "n/a",
+    "harder": "n/a",
+    "chaos": "Bonus objectives"
+   }
+  ],
+  "big": {
+   "name": "Round-Robin Coordination Games Day",
+   "desc": "Students rotate through short games and challenges across multiple areas, using simple scoring or a fair-play points system. Every skill from the unit — tracking, catching, striking, timing, reacting, and combining hands and feet — is relevant somewhere in these games."
+  },
+  "discussion": [
+   "What's one hand-eye coordination skill from this whole unit you're most proud of improving?",
+   "What did sharp, confident coordination look like in today's games day?",
+   "What will you take from this unit into other games or sports?"
+  ],
+  "lookfors": [
+   "Applies a visible range of hand-eye coordination skills from across the unit, not just one",
+   "Plays fairly and communicates throughout a competitive setting",
+   "Shows growth as a coordinator compared to Lesson 1 (informal, teacher's own judgement — no formal recording required)"
+  ],
+  "inclusion": "Structure the games day with balanced/mixed-ability groupings; consider a simple fair-play recognition alongside game results to keep the culminating day inclusive and values-aligned.",
+  "skillBreakdown": [
+   {
+    "step": "Apply skills from across the whole unit — tracking and catching, striking, reacting, timing, and combining hands and feet.",
+    "why": "The games day brings everything the unit has built together under real, enjoyable pressure."
+   },
+   {
+    "step": "Communicate and support teammates and opponents throughout.",
+    "why": "Fair play and clear communication are as much a part of this unit as the coordination skills themselves."
+   },
+   {
+    "step": "Reflect on your growth as a hand-eye coordinator compared to Lesson 1.",
+    "why": "Reflecting on your own improvement in tracking, striking, and reacting is as valuable as the result of any one game."
+   }
+  ],
+  "value": "Pānga",
+  "valueText": "Seeing how your role today connects to the bigger team effort — a small contribution that matters once it's put together with everyone else's."
+ }
+];
+
 const UNITS = {
   soccer: {n:1, name:"Soccer", abbr:"SOC", meta:{class:"20–30", space:"Full field", session:"45 min, fixed"}, blockInfo: BLOCK_INFO, lessons: LESSONS},
   rippa: {n:2, name:"Rippa Rugby", abbr:"RIP", meta:{class:"20–30", space:"Full field", session:"45 min, fixed"}, blockInfo: RIPPA_BLOCK_INFO, lessons: RIPPA_LESSONS},
@@ -16134,7 +17565,8 @@ const UNITS = {
   teeball: {n:8, name:"Teeball", abbr:"TEE", meta:{class:"20–30", space:"Full field or oval, small modified diamond", session:"45 min, fixed"}, blockInfo: TEEBALL_BLOCK_INFO, lessons: TEEBALL_LESSONS},
   tennis: {n:9, name:"Tennis", abbr:"TEN", meta:{class:"20–30", space:"Hard-court / marked Hot Shots courts (or hall as backup)", session:"45 min, fixed"}, blockInfo: TENNIS_BLOCK_INFO, lessons: TENNIS_LESSONS},
   teamplay: {n:10, name:"Team Play", abbr:"TMP", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: TEAMPLAY_BLOCK_INFO, lessons: TEAMPLAY_LESSONS},
-  strategy: {n:11, name:"Strategy & Decision-Making", abbr:"STR", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: STRATEGY_BLOCK_INFO, lessons: STRATEGY_LESSONS}
+  strategy: {n:11, name:"Strategy & Decision-Making", abbr:"STR", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: STRATEGY_BLOCK_INFO, lessons: STRATEGY_LESSONS},
+  handeye: {n:12, name:"Hand–Eye Coordination", abbr:"H·E", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: HANDEYE_BLOCK_INFO, lessons: HANDEYE_LESSONS}
 };
 
 const SPORT_UNITS = [
@@ -16151,7 +17583,7 @@ const SPORT_UNITS = [
 const FOCUS_UNITS = [
   {n:10,key:"teamplay",name:"Team Play",sub:"Working Together",abbr:"TMP",active:true,tag:"20 lessons ready"},
   {n:11,key:"strategy",name:"Strategy & Decision-Making",sub:"Reading the Game",abbr:"STR",active:true,tag:"20 lessons ready"},
-  {n:12,name:"Hand–Eye Coordination",abbr:"H·E"}
+  {n:12,key:"handeye",name:"Hand–Eye Coordination",sub:"Track, Strike, React",abbr:"H·E",active:true,tag:"20 lessons ready"}
 ];
 
 /* ============ STATE & ROUTER ============ */
@@ -16209,7 +17641,7 @@ function renderHome(){
     <section class="hero">
       <div class="eyebrow">Years 5/6 · Curriculum Level 3</div>
       <h1>Pick a sport.<br>Get a <em>ready-to-run</em> lesson.</h1>
-      <p>Twelve units, twenty lessons each — three skill games building to one big game, every day. Soccer, Rippa Rugby, Netball, Basketball, Hockey, Volleyball, Cricket, Teeball, and Tennis are fully built out. Choose one below to browse all 20 lessons.</p>
+      <p>Twelve units, twenty lessons each — three skill games building to one big game, every day. All twelve units are now fully built out, including the Strategy &amp; Decision-Making and Hand–Eye Coordination cross-cutting focus areas. Choose one below to browse all 20 lessons.</p>
     </section>
 
     <div class="section-label"><span>Sport Units</span><span class="line"></span></div>
