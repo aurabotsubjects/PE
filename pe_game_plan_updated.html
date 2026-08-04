@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PE Game Plan — Years 5/6</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pitch-dark:#0F2A21;
+    --pitch:#173C2E;
+    --pitch-mid:#1F4E3B;
+    --pitch-line: rgba(246,242,231,0.055);
+    --chalk:#F6F2E7;
+    --chalk-dim:#C9C2AC;
+    --gold:#E3A857;
+    --gold-deep:#C68A3A;
+    --ink:#0B1B15;
+    --b1:#E3A857;
+    --b1-soft: rgba(227,168,87,0.15);
+    --b2:#48A0A8;
+    --b2-soft: rgba(72,160,168,0.15);
+    --b3:#CC6B36;
+    --b3-soft: rgba(204,107,54,0.15);
+    --b4:#5D74B0;
+    --b4-soft: rgba(93,116,176,0.15);
+    --radius: 14px;
+    --shadow: 0 14px 34px rgba(0,0,0,0.35);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      repeating-linear-gradient(180deg, var(--pitch-line) 0px, var(--pitch-line) 1px, transparent 1px, transparent 46px),
+      radial-gradient(circle at 12% 8%, var(--pitch-mid), var(--pitch-dark) 55%);
+    background-color: var(--pitch-dark);
+    color: var(--chalk);
+    font-family:'Work Sans', sans-serif;
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{font-family:'Anton', sans-serif; letter-spacing:0.02em; text-transform:uppercase;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+  a{color:inherit;}
+  button{font-family:inherit;}
+  ::selection{background:var(--gold); color:var(--ink);}
+
+  /* ---------- Top bar ---------- */
+  .topbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 22px clamp(18px,4vw,56px) 10px;
+    max-width:1200px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px; cursor:pointer;}
+  .brand-badge{
+    width:42px; height:42px; border-radius:50%;
+    background: conic-gradient(from 90deg, var(--gold), var(--b3), var(--b2), var(--b4), var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: inset 0 0 0 3px var(--pitch-dark), 0 4px 10px rgba(0,0,0,0.4);
+  }
+  .brand-badge span{
+    width:32px; height:32px; border-radius:50%; background:var(--pitch-dark);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Anton',sans-serif; font-size:14px; color:var(--gold);
+  }
+  .brand-text .k{font-size:11px; letter-spacing:0.22em; color:var(--chalk-dim); text-transform:uppercase;}
+  .brand-text .t{font-size:18px; font-family:'Anton',sans-serif; letter-spacing:0.03em;}
+  .crumbs{font-size:13px; color:var(--chalk-dim); display:flex; gap:8px; align-items:center;}
+  .crumbs .seg{cursor:pointer;}
+  .crumbs .seg:hover{color:var(--gold);}
+  .crumbs .sep{opacity:0.4;}
+
+  main{max-width:1200px; margin:0 auto; padding: 10px clamp(18px,4vw,56px) 90px;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding: 34px 0 26px; border-bottom:1px solid rgba(246,242,231,0.08); margin-bottom:34px;}
+  .hero .eyebrow{color:var(--gold); font-size:13px; letter-spacing:0.24em; text-transform:uppercase; margin-bottom:10px; font-weight:600;}
+  .hero h1{font-family:'Anton',sans-serif; font-size:clamp(34px,6vw,64px); line-height:0.98; margin:0 0 14px; letter-spacing:0.01em;}
+  .hero h1 em{font-style:normal; color:var(--gold);}
+  .hero p{max-width:640px; color:var(--chalk-dim); font-size:16px; line-height:1.6; margin:0;}
+
+  /* ---------- Unit grid (home) ---------- */
+  .section-label{
+    display:flex; align-items:center; gap:14px; margin: 34px 0 16px;
+    font-size:13px; letter-spacing:0.2em; text-transform:uppercase; color:var(--chalk-dim);
+  }
+  .section-label .line{flex:1; height:1px; background:rgba(246,242,231,0.12);}
+  .unit-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px;
+  }
+  .unit-card{
+    position:relative; border-radius:var(--radius); padding:20px;
+    background: linear-gradient(155deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
+    border:1px solid rgba(246,242,231,0.1);
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    cursor:pointer; min-height:150px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .unit-card.active:hover{ transform: translateY(-4px); border-color: var(--gold); box-shadow: var(--shadow);}
+  .unit-card.locked{ opacity:0.46; cursor:not-allowed; }
+  .unit-card .num{ font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--chalk-dim);}
+  .unit-badge{
+    width:46px; height:46px; border-radius:10px; display:flex; align-items:center; justify-content:center;
+    font-family:'Anton',sans-serif; font-size:14px; margin:10px 0 14px; letter-spacing:0.03em;
+    background: rgba(227,168,87,0.14); color:var(--gold); border:1px solid rgba(227,168,87,0.35);
+  }
+  .unit-card.locked .unit-badge{background:rgba(246,242,231,0.06); color:var(--chalk-dim); border-color:rgba(246,242,231,0.14);}
+  .unit-card h3{margin:0 0 4px; font-size:19px; font-family:'Anton',sans-serif; font-weight:400; letter-spacing:0.01em; text-transform:none;}
+  .unit-card .sub{font-size:12.5px; color:var(--chalk-dim);}
+  .tag{
+    align-self:flex-start; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase;
+    padding:4px 9px; border-radius:20px; margin-top:12px; font-weight:600;
+  }
+  .tag.ready{background:rgba(227,168,87,0.18); color:var(--gold); border:1px solid rgba(227,168,87,0.4);}
+  .tag.soon{background:rgba(246,242,231,0.07); color:var(--chalk-dim); border:1px solid rgba(246,242,231,0.14);}
+
+  /* ---------- Unit (soccer) view ---------- */
+  .unit-hero{
+    display:flex; flex-wrap:wrap; gap:22px; align-items:center; justify-content:space-between;
+    padding:26px 26px; border-radius:18px; margin-bottom:8px;
+    background: linear-gradient(120deg, rgba(227,168,87,0.14), rgba(255,255,255,0.02));
+    border:1px solid rgba(227,168,87,0.25);
+  }
+  .unit-hero .left .eyebrow{color:var(--gold); font-size:12.5px; letter-spacing:0.22em; text-transform:uppercase; font-weight:600; margin-bottom:8px;}
+  .unit-hero h2{font-family:'Anton',sans-serif; font-size:clamp(28px,4.4vw,44px); margin:0;}
+  .unit-hero .meta{display:flex; gap:22px; flex-wrap:wrap; margin-top:14px;}
+  .unit-hero .meta div{font-size:12px; color:var(--chalk-dim);}
+  .unit-hero .meta div b{display:block; color:var(--chalk); font-size:15px; font-weight:600;}
+
+  .unit-toolbar{display:flex; justify-content:flex-end; margin: 14px 0 2px;}
+
+  .legend{display:flex; gap:14px; flex-wrap:wrap; margin: 28px 0 6px;}
+  .legend .chip{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--chalk-dim);}
+  .legend .dot{width:10px; height:10px; border-radius:3px;}
+
+  .block{margin-top:30px;}
+  .block-head{display:flex; align-items:baseline; gap:14px; margin-bottom:14px; flex-wrap:wrap;}
+  .block-head .chip{
+    font-family:'Anton',sans-serif; font-size:13px; letter-spacing:0.05em; padding:5px 12px; border-radius:8px; color:var(--ink);
+  }
+  .block-head h3{font-family:'Anton',sans-serif; font-weight:400; font-size:20px; margin:0; text-transform:none;}
+  .block-head .rt{margin-left:auto; font-size:12px; color:var(--chalk-dim);}
+
+  .lesson-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:12px;
+  }
+  .lesson-card{
+    border-radius:12px; padding:14px; cursor:pointer; position:relative; overflow:hidden;
+    background: rgba(255,255,255,0.035); border:1px solid rgba(246,242,231,0.09);
+    transition: transform .15s ease, border-color .15s ease;
+    min-height:104px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .lesson-card:hover{ transform: translateY(-3px); border-color: var(--block-color, var(--gold)); }
+  .lesson-card::before{
+    content:''; position:absolute; left:0; top:0; bottom:0; width:4px; background:var(--block-color, var(--gold));
+  }
+  .lesson-card .jersey{
+    font-family:'Anton',sans-serif; font-size:26px; color:var(--block-color, var(--gold)); line-height:1;
+  }
+  .lesson-card .lt{font-size:12.5px; font-weight:600; margin-top:8px; line-height:1.25;}
+  .lesson-card .lf{font-size:10.5px; color:var(--chalk-dim); margin-top:3px; line-height:1.3;}
+
+  /* ---------- Lesson detail ---------- */
+  .lesson-banner{
+    border-radius:18px; padding:28px clamp(18px,4vw,36px); margin-bottom:26px; position:relative; overflow:hidden;
+    background: linear-gradient(120deg, var(--block-soft, var(--b1-soft)), rgba(255,255,255,0.015));
+    border:1px solid var(--block-color, var(--b1));
+  }
+  .lesson-banner .row1{display:flex; align-items:center; gap:16px; flex-wrap:wrap;}
+  .lesson-banner .num{font-family:'Anton',sans-serif; font-size:52px; color:var(--block-color,var(--b1)); line-height:1;}
+  .lesson-banner .titles .k{font-size:12px; letter-spacing:0.2em; text-transform:uppercase; color:var(--chalk-dim); margin-bottom:4px;}
+  .lesson-banner h2{font-family:'Anton',sans-serif; font-size:clamp(26px,4vw,40px); margin:0; text-transform:none;}
+  .lesson-banner .focus{margin-top:12px; font-size:15px; color:var(--chalk-dim); max-width:720px; line-height:1.5;}
+  .lesson-banner .badges{display:flex; gap:8px; margin-top:16px; flex-wrap:wrap;}
+  .badge-pill{font-size:11px; letter-spacing:0.06em; padding:5px 11px; border-radius:20px; background:rgba(0,0,0,0.22); border:1px solid rgba(246,242,231,0.14); color:var(--chalk-dim);}
+
+  .grid-2col{display:grid; grid-template-columns: 2.1fr 1fr; gap:26px;}
+  @media (max-width: 880px){ .grid-2col{grid-template-columns:1fr;} }
+
+  .card{
+    background: rgba(255,255,255,0.032); border:1px solid rgba(246,242,231,0.09); border-radius:var(--radius);
+    padding:20px 22px; margin-bottom:18px;
+  }
+  .card h4{
+    font-family:'Anton',sans-serif; font-size:14px; letter-spacing:0.1em; text-transform:uppercase; margin:0 0 12px;
+    color:var(--gold); display:flex; align-items:center; gap:8px;
+  }
+  .walt-wilf p{margin:0 0 10px; font-size:14.5px; line-height:1.55;}
+  .walt-wilf .lbl{font-size:11px; letter-spacing:0.14em; color:var(--gold); text-transform:uppercase; margin-right:6px;}
+  .walt-wilf ul{margin:6px 0 0; padding-left:18px;}
+  .walt-wilf li{font-size:14px; line-height:1.6; margin-bottom:4px; color:var(--chalk);}
+
+  .skill-breakdown{border-color: rgba(227,168,87,0.28);}
+  .sb-list{margin:0; padding:0; list-style:none; counter-reset: sbstep;}
+  .sb-step{
+    counter-increment: sbstep; position:relative; padding:12px 14px 12px 46px; margin-bottom:10px;
+    background:rgba(227,168,87,0.06); border:1px solid rgba(227,168,87,0.18); border-radius:10px;
+  }
+  .sb-step:last-child{margin-bottom:0;}
+  .sb-step::before{
+    content: counter(sbstep); position:absolute; left:12px; top:12px; width:22px; height:22px; border-radius:50%;
+    background:var(--gold); color:var(--ink); font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .sb-step .sb-do{font-size:14.5px; line-height:1.55; color:var(--chalk); font-weight:600; margin-bottom:4px;}
+  .sb-step .sb-why{font-size:13.5px; line-height:1.55; color:var(--chalk-dim);}
+  .sb-step .sb-why b{color:var(--gold); font-style:normal; letter-spacing:0.04em; text-transform:uppercase; font-size:11px; margin-right:5px;}
+
+  /* Timeline (signature element) */
+  .timeline-wrap{margin-bottom:24px;}
+  .timeline-bar{display:flex; width:100%; height:52px; border-radius:10px; overflow:hidden; box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35);}
+  .tseg{
+    display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative;
+    color:var(--ink); font-size:10.5px; font-weight:700; letter-spacing:0.02em; text-align:center; padding:2px 4px;
+    border-right:2px solid rgba(11,27,21,0.5);
+  }
+  .tseg:last-child{border-right:none;}
+  .tseg .mm{font-family:'JetBrains Mono',monospace; font-size:9px; opacity:0.75;}
+  .timeline-ticks{display:flex; justify-content:space-between; font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--chalk-dim); margin-top:6px;}
+
+  .segment-card{
+    border-radius:var(--radius); padding:20px 22px; margin-bottom:16px;
+    border-left:4px solid var(--seg-color, var(--gold));
+    background: rgba(255,255,255,0.032); border-top:1px solid rgba(246,242,231,0.09); border-right:1px solid rgba(246,242,231,0.09); border-bottom:1px solid rgba(246,242,231,0.09);
+  }
+  .segment-card .sc-head{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px;}
+  .segment-card .sc-kicker{font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--seg-color, var(--gold)); font-weight:700;}
+  .segment-card .sc-time{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--chalk-dim); margin-left:auto;}
+  .segment-card h5{font-family:'Anton',sans-serif; font-size:19px; margin:0 0 8px; text-transform:none;}
+  .segment-card p.desc{font-size:14px; line-height:1.6; color:var(--chalk); margin:0 0 12px;}
+  .segment-card .setup-block{font-size:13px; line-height:1.6; color:var(--chalk); background:rgba(227,168,87,0.06); border-left:3px solid var(--seg-color, var(--gold)); padding:8px 12px; margin:0 0 12px; border-radius:0 6px 6px 0;}
+  .segment-card .setup-block b{color:var(--gold); display:block; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; margin-bottom:3px;}
+  .segment-card .howto-label{font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); font-weight:700; margin:0 0 6px;}
+  .segment-card .howto-list{margin:0 0 12px; padding-left:20px; font-size:13.5px; line-height:1.65; color:var(--chalk);}
+  .segment-card .howto-list li{margin-bottom:5px;}
+  .diff-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+  .diff-chip{
+    flex:1 1 200px; font-size:12.5px; padding:10px 12px; border-radius:9px; background:rgba(0,0,0,0.2); line-height:1.45;
+  }
+  .diff-chip b{display:block; font-size:10.5px; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:3px; color:var(--chalk-dim);}
+  .coach-point{font-size:13px; color:var(--gold); background:rgba(227,168,87,0.09); border:1px solid rgba(227,168,87,0.25); padding:8px 12px; border-radius:8px; margin-bottom:10px; line-height:1.5;}
+  .chaos-lever{display:inline-flex; align-items:center; gap:6px; font-size:11px; margin-top:6px; padding:4px 10px; border-radius:20px; background:rgba(255,255,255,0.06); color:var(--chalk-dim);}
+
+  .discussion ol{margin:0; padding-left:20px;}
+  .discussion li{font-size:14.5px; line-height:1.7; margin-bottom:8px;}
+  .values-q{
+    margin-top:14px; padding:14px 16px; border-radius:10px; background: var(--block-soft, var(--b1-soft));
+    border:1px solid var(--block-color, var(--b1)); font-size:14px; line-height:1.6;
+  }
+  .values-q b{color:var(--block-color, var(--b1)); display:block; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; margin-bottom:5px;}
+
+  .sidebar .card ul{margin:0; padding-left:18px;}
+  .sidebar .card li{font-size:13.5px; line-height:1.6; margin-bottom:6px; color:var(--chalk);}
+  .sidebar .fact{font-size:13.5px; line-height:1.6; margin-bottom:10px;}
+  .sidebar .fact b{display:block; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:3px;}
+  .inclusion-box{ font-size:13.5px; line-height:1.6; background: rgba(72,160,168,0.1); border:1px solid rgba(72,160,168,0.3); padding:12px 14px; border-radius:9px;}
+
+  .lesson-nav{display:flex; justify-content:space-between; gap:12px; margin-top:30px; padding-top:22px; border-top:1px solid rgba(246,242,231,0.1);}
+  .nav-btn{
+    display:flex; align-items:center; gap:10px; padding:12px 16px; border-radius:10px; cursor:pointer;
+    background: rgba(255,255,255,0.04); border:1px solid rgba(246,242,231,0.12); color:var(--chalk); text-decoration:none;
+    font-size:13px; transition: border-color .15s ease, transform .15s ease; max-width:46%;
+  }
+  .nav-btn:hover{ border-color:var(--gold); transform:translateY(-2px);}
+  .nav-btn .lbl{font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--chalk-dim); display:block; margin-bottom:2px;}
+  .nav-btn.next{ margin-left:auto; text-align:right; flex-direction:row-reverse;}
+  .nav-btn.disabled{opacity:0.25; pointer-events:none;}
+
+  .backlink{
+    display:inline-flex; align-items:center; gap:8px; font-size:13px; color:var(--chalk-dim); cursor:pointer; margin-bottom:6px;
+  }
+  .backlink:hover{color:var(--gold);}
+
+  .lesson-toolbar{display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:6px;}
+  .lesson-toolbar .backlink{margin-bottom:0;}
+  .print-btn{
+    display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:600; letter-spacing:0.02em;
+    padding:9px 16px; border-radius:9px; cursor:pointer; white-space:nowrap;
+    background:rgba(227,168,87,0.12); border:1px solid rgba(227,168,87,0.4); color:var(--gold);
+    transition: background .15s ease, transform .15s ease;
+  }
+  .print-btn:hover{background:rgba(227,168,87,0.22); transform:translateY(-1px);}
+  .print-btn .ic{font-size:14px; line-height:1;}
+
+  footer{ text-align:center; padding:30px 20px 50px; color:var(--chalk-dim); font-size:12px; }
+
+  .print-only{ display:none; }
+
+  @media (max-width:600px){
+    .grid-2col{gap:16px;}
+    .lesson-banner .num{font-size:38px;}
+    .timeline-bar{height:auto; flex-direction:column;}
+    .tseg{ padding:8px 6px; border-right:none; border-bottom:2px solid rgba(11,27,21,0.5); flex-direction:row; justify-content:space-between; }
+  }
+
+  /* ================= PRINT / SAVE-AS-PDF ================= */
+  @media print{
+    .no-print{ display:none !important; }
+    .topbar, .lesson-toolbar, .lesson-nav, footer, .backlink, .print-btn{ display:none !important; }
+
+    *{ box-shadow:none !important; text-shadow:none !important; -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; color-adjust:exact !important; }
+
+    :root{
+      --pitch-dark:#ffffff; --pitch:#ffffff; --pitch-mid:#ffffff; --pitch-line:transparent;
+      --chalk:#181818; --chalk-dim:#4a4a4a; --gold:#8a5a19; --gold-deep:#6e4614; --ink:#181818;
+    }
+    html,body{ background:#ffffff !important; color:#181818 !important; min-height:0; }
+    main{ max-width:100% !important; padding:0 4px 10px !important; }
+
+    .hero, .section-label, .unit-grid, .cross-grid{ display:none !important; }
+
+    .lesson-banner{
+      background:#ffffff !important; border:2px solid var(--block-color,#8a5a19) !important;
+      border-radius:10px; padding:16px 18px; margin-bottom:16px; page-break-inside:avoid; break-inside:avoid;
+    }
+    .lesson-banner .num{ font-size:34px; }
+    .badge-pill{ background:#f0f0f0 !important; border:1px solid #ccc !important; color:#333 !important; }
+
+    .grid-2col{ display:block !important; }
+    .sidebar{ margin-top:8px; }
+    .sidebar .card{ display:inline-block; width:100%; }
+
+    .card, .segment-card{
+      background:#fbfbfa !important; border:1px solid #cfcfcf !important;
+      page-break-inside:avoid; break-inside:avoid; margin-bottom:12px; padding:14px 16px;
+    }
+    .card h4{ color:#8a5a19 !important; }
+    .segment-card{ border-left:4px solid var(--seg-color,#8a5a19) !important; }
+    .segment-card .sc-time{ color:#555 !important; }
+
+    .sb-step{ background:#f6efe0 !important; border:1px solid #d9c8a0 !important; page-break-inside:avoid; break-inside:avoid; }
+    .sb-step::before{ background:#8a5a19 !important; color:#fff !important; }
+    .sb-step .sb-why b{ color:#8a5a19 !important; }
+
+    .timeline-bar{ box-shadow:none !important; border:1px solid #ccc; height:auto !important; flex-wrap:wrap; }
+    .tseg{ background:#f0e6cf !important; color:#181818 !important; border-right:1px solid #fff !important; padding:6px 4px !important; flex:1 1 13%; }
+
+    .diff-chip{ background:#f1f1ef !important; border:1px solid #ddd; }
+    .coach-point{ background:#fbf3e0 !important; border:1px solid #d9b876 !important; color:#6e4614 !important; }
+    .chaos-lever{ background:#f1f1ef !important; border:1px solid #ddd; color:#333 !important; }
+    .setup-block{ background:#f6efe0 !important; border-left:3px solid #8a5a19 !important; color:#333 !important; }
+    .setup-block b{ color:#8a5a19 !important; }
+    .howto-label{ color:#8a5a19 !important; }
+    .howto-list{ color:#333 !important; }
+    .values-q{ background:#f6efe0 !important; border:1px solid var(--block-color,#8a5a19) !important; }
+    .values-q b{ color:var(--block-color,#8a5a19) !important; }
+    .inclusion-box{ background:#eaf4f4 !important; border:1px solid #8fc4c8 !important; }
+
+    .sidebar .fact b{ color:#8a5a19 !important; }
+
+    a{ text-decoration:none; color:inherit; }
+    @page{ margin: 1.3cm; }
+
+    /* ---- Print-all-lessons flow ---- */
+    #printAllContainer{ display:none; }
+    body.print-all-mode #app{ display:none !important; }
+    body.print-all-mode #printAllContainer{ display:block !important; }
+
+    .print-cover{
+      min-height:24cm; display:flex; flex-direction:column; justify-content:center;
+      page-break-after:always; break-after:page;
+    }
+    .print-cover .pc-eyebrow{ font-size:13px; letter-spacing:0.22em; text-transform:uppercase; color:#8a5a19; font-weight:600; margin-bottom:14px; }
+    .print-cover h1{ font-family:'Anton',sans-serif; font-size:56px; margin:0 0 10px; text-transform:none; }
+    .print-cover .pc-sub{ font-size:16px; color:#4a4a4a; margin-bottom:26px; }
+    .print-cover .pc-meta{ display:flex; gap:34px; flex-wrap:wrap; }
+    .print-cover .pc-meta div{ font-size:12.5px; color:#4a4a4a; }
+    .print-cover .pc-meta div b{ display:block; color:#181818; font-size:16px; font-weight:600; margin-top:3px; }
+
+    .print-lesson-page{ page-break-before:always; break-before:page; }
+  }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="brand" onclick="goHome()">
+    <div class="brand-badge"><span>PE</span></div>
+    <div class="brand-text">
+      <div class="k">Years 5/6 · Level 3</div>
+      <div class="t">PE Game Plan</div>
+    </div>
+  </div>
+  <div class="crumbs" id="crumbs"></div>
+</div>
+
+<main id="app"></main>
+<div id="printAllContainer" class="print-only"></div>
+
+<footer>Built from the Years 5/6 Game-Based PE Program plan · All twelve units live — Soccer, Rippa Rugby, Netball, Basketball, Hockey, Volleyball, Cricket, Teeball, Tennis, Team Play, Strategy &amp; Decision-Making, and Hand–Eye Coordination — 20 lessons each</footer>
+
+<script src="data/soccer_data.js"></script>
+<script src="data/rippa_data.js"></script>
+<script src="data/teeball_data.js"></script>
+<script src="data/cricket_data.js"></script>
+<script src="data/netball_data.js"></script>
+<script src="data/basketball_data.js"></script>
+<script src="data/hockey_data.js"></script>
+<script src="data/tennis_data.js"></script>
+<script src="data/volleyball_data.js"></script>
+<script src="data/teamplay_data.js"></script>
+<script src="data/strategy_data.js"></script>
+<script src="data/handeye_data.js"></script>
+<script>
+/* ============ DATA ============ */
+
+
+
+
+
+
+const UNITS = {
+  soccer: {n:1, name:"Soccer", abbr:"SOC", meta:{class:"20–30", space:"Full field", session:"45 min, fixed"}, blockInfo: BLOCK_INFO, lessons: LESSONS},
+  rippa: {n:2, name:"Rippa Rugby", abbr:"RIP", meta:{class:"20–30", space:"Full field", session:"45 min, fixed"}, blockInfo: RIPPA_BLOCK_INFO, lessons: RIPPA_LESSONS},
+  netball: {n:3, name:"Netball", abbr:"NET", meta:{class:"20–30", space:"Concrete half-court", session:"45 min, fixed"}, blockInfo: NETBALL_BLOCK_INFO, lessons: NETBALL_LESSONS},
+  basketball: {n:4, name:"Basketball", abbr:"BBL", meta:{class:"20–30", space:"Concrete half-court", session:"45 min, fixed"}, blockInfo: BASKETBALL_BLOCK_INFO, lessons: BASKETBALL_LESSONS},
+  hockey: {n:5, name:"Hockey", abbr:"HOC", meta:{class:"20–30", space:"Full field or turf", session:"45 min, fixed"}, blockInfo: HOCKEY_BLOCK_INFO, lessons: HOCKEY_LESSONS},
+  volleyball: {n:6, name:"Volleyball", abbr:"VBL", meta:{class:"20–30", space:"Indoor court/hall or hard-court, modified low nets", session:"45 min, fixed"}, blockInfo: VOLLEYBALL_BLOCK_INFO, lessons: VOLLEYBALL_LESSONS},
+  cricket: {n:7, name:"Cricket", abbr:"CRI", meta:{class:"20–30", space:"Full field or oval, shorter modified pitch", session:"45 min, fixed"}, blockInfo: CRICKET_BLOCK_INFO, lessons: CRICKET_LESSONS},
+  teeball: {n:8, name:"Teeball", abbr:"TEE", meta:{class:"20–30", space:"Full field or oval, small modified diamond", session:"45 min, fixed"}, blockInfo: TEEBALL_BLOCK_INFO, lessons: TEEBALL_LESSONS},
+  tennis: {n:9, name:"Tennis", abbr:"TEN", meta:{class:"20–30", space:"Hard-court / marked Hot Shots courts (or hall as backup)", session:"45 min, fixed"}, blockInfo: TENNIS_BLOCK_INFO, lessons: TENNIS_LESSONS},
+  teamplay: {n:10, name:"Team Play", abbr:"TMP", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: TEAMPLAY_BLOCK_INFO, lessons: TEAMPLAY_LESSONS},
+  strategy: {n:11, name:"Strategy & Decision-Making", abbr:"STR", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: STRATEGY_BLOCK_INFO, lessons: STRATEGY_LESSONS},
+  handeye: {n:12, name:"Hand–Eye Coordination", abbr:"H·E", meta:{class:"20–30", space:"Any large open space — field, hall, or court (fully adaptable)", session:"45 min, fixed"}, blockInfo: HANDEYE_BLOCK_INFO, lessons: HANDEYE_LESSONS}
+};
+
+const SPORT_UNITS = [
+  {n:1,key:"soccer",name:"Soccer",abbr:"SOC",active:true,tag:"20 lessons ready"},
+  {n:2,key:"rippa",name:"Rippa Rugby",abbr:"RIP",active:true,tag:"20 lessons ready"},
+  {n:3,key:"netball",name:"Netball",abbr:"NET",active:true,tag:"20 lessons ready"},
+  {n:4,key:"basketball",name:"Basketball",abbr:"BBL",active:true,tag:"20 lessons ready"},
+  {n:5,key:"hockey",name:"Hockey",abbr:"HOC",active:true,tag:"20 lessons ready"},
+  {n:6,key:"volleyball",name:"Volleyball",abbr:"VBL",active:true,tag:"20 lessons ready"},
+  {n:7,key:"cricket",name:"Cricket",abbr:"CRI",active:true,tag:"20 lessons ready"},
+  {n:8,key:"teeball",name:"Teeball",abbr:"TEE",active:true,tag:"20 lessons ready"},
+  {n:9,key:"tennis",name:"Tennis",abbr:"TEN",active:true,tag:"20 lessons ready"}
+];
+const FOCUS_UNITS = [
+  {n:10,key:"teamplay",name:"Team Play",sub:"Working Together",abbr:"TMP",active:true,tag:"20 lessons ready"},
+  {n:11,key:"strategy",name:"Strategy & Decision-Making",sub:"Reading the Game",abbr:"STR",active:true,tag:"20 lessons ready"},
+  {n:12,key:"handeye",name:"Hand–Eye Coordination",sub:"Track, Strike, React",abbr:"H·E",active:true,tag:"20 lessons ready"}
+];
+
+/* ============ STATE & ROUTER ============ */
+let view = "home"; // home | unit | lesson
+let currentUnit = null; // key into UNITS
+let currentLesson = 1;
+
+function goHome(){ view="home"; currentUnit=null; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+function openUnit(key){ if(!key || !UNITS[key]) return; currentUnit=key; view="unit"; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+function openLesson(n){ currentLesson=n; view="lesson"; render(); window.scrollTo({top:0,behavior:"smooth"}); }
+
+function render(){
+  const app = document.getElementById('app');
+  const crumbs = document.getElementById('crumbs');
+  if(view==="home"){
+    crumbs.innerHTML = `<span class="seg" style="color:var(--gold)">Program</span>`;
+    app.innerHTML = renderHome();
+  } else if(view==="unit"){
+    const u = UNITS[currentUnit];
+    crumbs.innerHTML = `<span class="seg" onclick="goHome()">Program</span><span class="sep">/</span><span class="seg" style="color:var(--gold)">${u.name}</span>`;
+    app.innerHTML = renderUnit();
+  } else if(view==="lesson"){
+    const u = UNITS[currentUnit];
+    crumbs.innerHTML = `<span class="seg" onclick="goHome()">Program</span><span class="sep">/</span><span class="seg" onclick="openUnit('${currentUnit}')">${u.name}</span><span class="sep">/</span><span class="seg" style="color:var(--gold)">Lesson ${currentLesson}</span>`;
+    app.innerHTML = renderLesson(currentLesson);
+  }
+}
+
+function renderHome(){
+  let sportCards = SPORT_UNITS.map(u => `
+    <div class="unit-card ${u.active?'active':'locked'}" onclick="${u.active? `openUnit('${u.key}')`:""}">
+      <div>
+        <div class="num">UNIT ${String(u.n).padStart(2,'0')}</div>
+        <div class="unit-badge">${u.abbr}</div>
+        <h3>${u.name}</h3>
+        <div class="sub">Sport unit · 20 lessons</div>
+      </div>
+      <div class="tag ${u.active?'ready':'soon'}">${u.active? (u.tag||'Ready') : 'Coming soon'}</div>
+    </div>
+  `).join('');
+
+  let focusCards = FOCUS_UNITS.map(u => `
+    <div class="unit-card ${u.active?'active':'locked'}" onclick="${u.active? `openUnit('${u.key}')`:""}">
+      <div>
+        <div class="num">UNIT ${String(u.n).padStart(2,'0')}</div>
+        <div class="unit-badge">${u.abbr}</div>
+        <h3>${u.name}</h3>
+        <div class="sub">${u.sub? u.sub : 'Cross-cutting focus'} · 20 lessons</div>
+      </div>
+      <div class="tag ${u.active?'ready':'soon'}">${u.active? (u.tag||'Ready') : 'Coming soon'}</div>
+    </div>
+  `).join('');
+
+  return `
+    <section class="hero">
+      <div class="eyebrow">Years 5/6 · Curriculum Level 3</div>
+      <h1>Pick a sport.<br>Get a <em>ready-to-run</em> lesson.</h1>
+      <p>Twelve units, twenty lessons each — three skill games building to one big game, every day. All twelve units are now fully built out, including the Strategy &amp; Decision-Making and Hand–Eye Coordination cross-cutting focus areas. Choose one below to browse all 20 lessons.</p>
+    </section>
+
+    <div class="section-label"><span>Sport Units</span><span class="line"></span></div>
+    <div class="unit-grid">${sportCards}</div>
+
+    <div class="section-label"><span>Cross-Cutting Focus Areas</span><span class="line"></span></div>
+    <div class="unit-grid">${focusCards}</div>
+  `;
+}
+
+function renderUnit(){
+  const u = UNITS[currentUnit];
+  const blockInfo = u.blockInfo;
+  const lessons = u.lessons;
+
+  const blockSections = [1,2,3,4].map(b=>{
+    const info = blockInfo[b];
+    const blockLessons = lessons.filter(l=>l.block===b);
+    const cards = blockLessons.map(l=>`
+      <div class="lesson-card" style="--block-color:${info.color}" onclick="openLesson(${l.n})">
+        <div class="jersey">${String(l.n).padStart(2,'0')}</div>
+        <div>
+          <div class="lt">${l.title}</div>
+          <div class="lf">${l.focus}</div>
+        </div>
+      </div>
+    `).join('');
+    return `
+      <div class="block">
+        <div class="block-head">
+          <span class="chip" style="background:${info.color}">Block ${b}</span>
+          <h3>${info.name}</h3>
+          <span class="rt">${info.range} · Warm-up: ${info.warmup} · Warm-down: ${info.warmdown}</span>
+        </div>
+        <div class="lesson-grid">${cards}</div>
+      </div>
+    `;
+  }).join('');
+
+  return `
+    <div class="unit-hero">
+      <div class="left">
+        <div class="eyebrow">Unit ${String(u.n).padStart(2,'0')} of 12</div>
+        <h2>${u.name}</h2>
+      </div>
+      <div class="meta">
+        <div>Class size<b>${u.meta.class}</b></div>
+        <div>Space<b>${u.meta.space}</b></div>
+        <div>Session length<b>${u.meta.session}</b></div>
+        <div>Structure<b>4 blocks × 5 lessons</b></div>
+      </div>
+    </div>
+
+    <div class="unit-toolbar no-print">
+      <button class="print-btn" onclick="printAllLessons('${currentUnit}')" title="Opens your browser's print dialog with all ${lessons.length} lesson plans — choose &quot;Save as PDF&quot; as the destination to download instead of printing.">
+        <span class="ic">🖨️</span> Print All ${lessons.length} Lessons / Save as PDF
+      </button>
+    </div>
+
+    <div class="legend">
+      ${[1,2,3,4].map(b=>`<div class="chip"><span class="dot" style="background:${blockInfo[b].color}"></span>Block ${b} — ${blockInfo[b].name}</div>`).join('')}
+    </div>
+
+    ${blockSections}
+  `;
+}
+
+function lessonBodyHTML(u, l){
+  const info = u.blockInfo[l.block];
+  const totalMin = TIMELINE.reduce((a,s)=>a+s.min,0);
+
+  const timelineSegs = TIMELINE.map((s,i)=>{
+    const widthPct = (s.min/totalMin*100).toFixed(2);
+    const palette = ["var(--chalk)","var(--gold)","var(--gold-deep)","var(--chalk-dim)","var(--gold)","var(--chalk)","var(--chalk-dim)"];
+    return `<div class="tseg" style="width:${widthPct}%; background:${palette[i%palette.length]}">
+      <div>${s.label}</div><div class="mm">${s.min} min</div>
+    </div>`;
+  }).join('');
+
+  const diffRow = (g)=> (g.easier==="—" && g.harder==="—") ? "" : `
+    <div class="diff-row">
+      <div class="diff-chip"><b>Easier</b>${g.easier}</div>
+      <div class="diff-chip"><b>Harder</b>${g.harder}</div>
+    </div>`;
+
+  const setupBlock = (g)=> g.setup ? `<div class="setup-block"><b>Setup</b>${g.setup}</div>` : "";
+  const howToBlock = (g)=> (g.howTo && g.howTo.length) ? `
+      <div class="howto-label">How to run it</div>
+      <ol class="howto-list">${g.howTo.map(step=>`<li>${step}</li>`).join('')}</ol>` : "";
+
+  const gameSegs = l.games.map((g,i)=>`
+    <div class="segment-card" style="--seg-color:${info.color}">
+      <div class="sc-head">
+        <span class="sc-kicker">Skill Game ${i+1}</span>
+        <span class="sc-time">6 min</span>
+      </div>
+      <h5>${g.name}</h5>
+      <p class="desc">${g.desc}</p>
+      ${setupBlock(g)}
+      ${howToBlock(g)}
+      <div class="coach-point">Coaching point — ${g.coach}</div>
+      ${diffRow(g)}
+      <span class="chaos-lever">⚡ Chaos lever: ${g.chaos}</span>
+    </div>
+  `).join('');
+
+  return `
+    <div class="lesson-banner" style="--block-color:${info.color}; --block-soft:${info.soft}">
+      <div class="row1">
+        <div class="num">${String(l.n).padStart(2,'0')}</div>
+        <div class="titles">
+          <div class="k">Block ${l.block} · ${info.name}</div>
+          <h2>${l.title}</h2>
+        </div>
+      </div>
+      <div class="focus">${l.focus}</div>
+      <div class="badges">
+        <span class="badge-pill">${l.nzc}</span>
+        <span class="badge-pill">Values focus — ${l.value}</span>
+        <span class="badge-pill">45 min · fixed structure</span>
+      </div>
+    </div>
+
+    <div class="grid-2col">
+      <div class="main">
+
+        <div class="card walt-wilf">
+          <h4>Learning Focus</h4>
+          <p><span class="lbl">WALT</span>${l.walt}</p>
+          <p style="margin-bottom:0"><span class="lbl">WILF</span></p>
+          <ul>${l.wilf.map(w=>`<li>${w}</li>`).join('')}</ul>
+        </div>
+
+        <div class="card skill-breakdown">
+          <h4>Skill Breakdown — ${l.focus}</h4>
+          <ol class="sb-list">${l.skillBreakdown.map(s=>`
+            <li class="sb-step">
+              <div class="sb-do">${s.step}</div>
+              <div class="sb-why"><b>Why</b>${s.why}</div>
+            </li>`).join('')}
+          </ol>
+        </div>
+
+        <div class="card timeline-wrap">
+          <h4>Lesson Timeline · 45 min</h4>
+          <div class="timeline-bar">${timelineSegs}</div>
+        </div>
+
+        <div class="segment-card" style="--seg-color:${info.color}">
+          <div class="sc-head"><span class="sc-kicker">Warm-Up</span><span class="sc-time">5 min</span></div>
+          <h5>${info.warmup}</h5>
+          <p class="desc">Block ${l.block} warm-up routine — repeated across all 5 lessons in this block for fast, consistent setup.</p>
+          ${info.warmupSetup ? `<div class="setup-block"><b>Setup</b>${info.warmupSetup}</div>` : ""}
+          ${(info.warmupHowTo && info.warmupHowTo.length) ? `<div class="howto-label">How to run it</div><ol class="howto-list">${info.warmupHowTo.map(step=>`<li>${step}</li>`).join('')}</ol>` : ""}
+        </div>
+
+        ${gameSegs}
+
+        <div class="segment-card" style="--seg-color:${info.color}">
+          <div class="sc-head"><span class="sc-kicker">Big Game</span><span class="sc-time">12 min</span></div>
+          <h5>${l.big.name}</h5>
+          <p class="desc">${l.big.desc}</p>
+          ${setupBlock(l.big)}
+          ${howToBlock(l.big)}
+        </div>
+
+        <div class="segment-card" style="--seg-color:${info.color}">
+          <div class="sc-head"><span class="sc-kicker">Warm-Down</span><span class="sc-time">5 min</span></div>
+          <h5>${info.warmdown}</h5>
+          ${info.warmdownSetup ? `<div class="setup-block"><b>Setup</b>${info.warmdownSetup}</div>` : ""}
+          ${(info.warmdownHowTo && info.warmdownHowTo.length) ? `<div class="howto-label">How to run it</div><ol class="howto-list">${info.warmdownHowTo.map(step=>`<li>${step}</li>`).join('')}</ol>` : ""}
+        </div>
+
+        <div class="card discussion">
+          <h4>Discussion &amp; Reflection · 5 min</h4>
+          <ol>${l.discussion.map(q=>`<li>${q}</li>`).join('')}</ol>
+          <div class="values-q">
+            <b>Values question — ${l.value}</b>
+            How did today's game connect to ${l.value.toLowerCase()}? ${l.valueText}
+          </div>
+        </div>
+
+      </div>
+
+      <div class="sidebar">
+        <div class="card">
+          <h4>Quick Facts</h4>
+          <div class="fact"><b>Equipment</b>${l.equipment}</div>
+          <div class="fact"><b>Safety</b>${l.safety}</div>
+          <div class="fact" style="margin-bottom:0"><b>NZC Links</b>${l.nzc}</div>
+        </div>
+
+        <div class="card">
+          <h4>School Values Focus</h4>
+          <div class="fact"><b>${l.value}</b>${l.valueText}</div>
+        </div>
+
+        <div class="card">
+          <h4>Look-Fors</h4>
+          <ul>${l.lookfors.map(x=>`<li>${x}</li>`).join('')}</ul>
+        </div>
+
+        <div class="card">
+          <h4>Inclusion Notes</h4>
+          <div class="inclusion-box">${l.inclusion}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderLesson(n){
+  const u = UNITS[currentUnit];
+  const lessons = u.lessons;
+  const l = lessons.find(x=>x.n===n);
+
+  const idx = lessons.findIndex(x=>x.n===n);
+  const prev = idx>0 ? lessons[idx-1] : null;
+  const next = idx<lessons.length-1 ? lessons[idx+1] : null;
+
+  return `
+    <div class="lesson-toolbar no-print">
+      <div class="backlink" onclick="openUnit('${currentUnit}')">← Back to ${u.name} unit</div>
+      <button class="print-btn" onclick="window.print()" title="Opens your browser's print dialog — choose &quot;Save as PDF&quot; as the destination to download instead of printing.">
+        <span class="ic">🖨️</span> Print / Save as PDF
+      </button>
+    </div>
+
+    ${lessonBodyHTML(u, l)}
+
+    <div class="lesson-nav">
+      ${prev? `<div class="nav-btn" onclick="openLesson(${prev.n})"><div><span class="lbl">← Previous</span>Lesson ${prev.n}: ${prev.title}</div></div>` : `<div class="nav-btn disabled"><div><span class="lbl">← Previous</span>—</div></div>`}
+      ${next? `<div class="nav-btn next" onclick="openLesson(${next.n})"><div><span class="lbl">Next →</span>Lesson ${next.n}: ${next.title}</div></div>` : `<div class="nav-btn next disabled"><div><span class="lbl">Next →</span>—</div></div>`}
+    </div>
+  `;
+}
+
+function buildUnitPrintHTML(unitKey){
+  const u = UNITS[unitKey];
+  if(!u) return '';
+  const cover = `
+    <div class="print-cover">
+      <div class="pc-eyebrow">Years 5/6 · Level 3 · PE Game Plan</div>
+      <h1>${u.name}</h1>
+      <div class="pc-sub">Full unit · ${u.lessons.length} lessons</div>
+      <div class="pc-meta">
+        <div>Class size<b>${u.meta.class}</b></div>
+        <div>Space<b>${u.meta.space}</b></div>
+        <div>Session length<b>${u.meta.session}</b></div>
+        <div>Structure<b>4 blocks × 5 lessons</b></div>
+      </div>
+    </div>
+  `;
+  const lessonsHtml = u.lessons.map(l => `
+    <div class="print-lesson-page">
+      ${lessonBodyHTML(u, l)}
+    </div>
+  `).join('');
+  return cover + lessonsHtml;
+}
+
+function printAllLessons(unitKey){
+  const container = document.getElementById('printAllContainer');
+  if(!container) return;
+  container.innerHTML = buildUnitPrintHTML(unitKey);
+  document.body.classList.add('print-all-mode');
+  setTimeout(()=>{ window.print(); }, 60);
+}
+
+window.addEventListener('afterprint', function(){
+  document.body.classList.remove('print-all-mode');
+  const container = document.getElementById('printAllContainer');
+  if(container) container.innerHTML = '';
+});
+
+render();
+</script>
+</body>
+</html>

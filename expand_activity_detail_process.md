@@ -10,7 +10,7 @@ file doesn't keep growing every time a unit gets the detailed treatment. Use thi
 the current files to get the same treatment applied to any other sport/unit, without
 re-explaining the goal or re-deriving the approach from scratch.
 
-**Soccer, Rippa, Teeball, Cricket, Netball, Basketball, Hockey, Tennis, and Volleyball are done** (detail added AND extracted to `data/` files). Everything below applies to the next unit in the queue.
+**Soccer, Rippa, Teeball, Cricket, Netball, Basketball, Hockey, Tennis, Volleyball, Team Play, Strategy & Decision-Making, and Hand-Eye Coordination are done** (detail added AND extracted to `data/` files). Every unit in the app has now had this treatment applied — there is no next unit currently queued.
 
 ## How to use this file
 Start a new chat, attach:
@@ -18,7 +18,8 @@ Start a new chat, attach:
 2. The current `pe_game_plan_updated.html` file (the latest version)
 3. The current `data/*.js` files (all of them — `soccer_data.js`, `rippa_data.js`,
    `teeball_data.js`, `cricket_data.js`, `netball_data.js`, `basketball_data.js`,
-   `hockey_data.js`, `tennis_data.js`, `volleyball_data.js`, and any others added since). The HTML file now loads these via
+   `hockey_data.js`, `tennis_data.js`, `volleyball_data.js`, `teamplay_data.js`,
+   `strategy_data.js`, `handeye_data.js`, and any others added since). The HTML file now loads these via
    `<script src="data/....js">` tags rather than containing that unit's data inline, so
    the HTML alone is no longer a complete copy of the app — the data files are required
    too.
@@ -31,8 +32,8 @@ Then say something like:
 
 ## Background on the file's structure
 - This is a single-page HTML app. Most lesson content still lives in JS arrays near the
-  top of the `<script>` block, one array per unit not yet extracted, e.g. `TEAMPLAY_LESSONS`,
-  `STRATEGY_LESSONS`, `HANDEYE_LESSONS`.
+  top of the `<script>` block, one array per unit not yet extracted, e.g. `STRATEGY_LESSONS`,
+  `HANDEYE_LESSONS`.
 - **Units that have already been fully processed (detail added + extracted) live outside
   the HTML entirely**, in their own files under `data/`: `data/soccer_data.js`
   (`BLOCK_INFO` + `LESSONS`), `data/rippa_data.js` (`RIPPA_BLOCK_INFO` + `RIPPA_LESSONS`),
@@ -41,7 +42,9 @@ Then say something like:
   `NETBALL_LESSONS`), `data/basketball_data.js` (`BASKETBALL_BLOCK_INFO` + `BASKETBALL_LESSONS`),
   `data/hockey_data.js` (`HOCKEY_BLOCK_INFO` + `HOCKEY_LESSONS`), `data/tennis_data.js`
   (`TENNIS_BLOCK_INFO` + `TENNIS_LESSONS`), `data/volleyball_data.js` (`VOLLEYBALL_BLOCK_INFO` +
-  `VOLLEYBALL_LESSONS`).
+  `VOLLEYBALL_LESSONS`), `data/teamplay_data.js` (`TEAMPLAY_BLOCK_INFO` + `TEAMPLAY_LESSONS`),
+  `data/strategy_data.js` (`STRATEGY_BLOCK_INFO` + `STRATEGY_LESSONS`), `data/handeye_data.js`
+  (`HANDEYE_BLOCK_INFO` + `HANDEYE_LESSONS`).
   These are loaded via `<script src="data/soccer_data.js"></script>` etc.,
   placed immediately before the main inline `<script>` block, so the `const` declarations
   inside them become available as ordinary globals by the time the inline script runs — no
@@ -192,7 +195,7 @@ Write as if for a teacher with **little to no PE or sport coaching experience**:
 ### Part B — extract the finished unit into its own data file
 
 Once Part A is validated, pull the unit's data out of the HTML so the HTML file stops
-growing. This mirrors exactly what was done for Soccer, Rippa, Teeball, Cricket, Netball, Basketball, Hockey, Tennis, and Volleyball.
+growing. This mirrors exactly what was done for Soccer, Rippa, Teeball, Cricket, Netball, Basketball, Hockey, Tennis, Volleyball, Team Play, Strategy & Decision-Making, and Hand-Eye Coordination.
 
 11. **Identify the exact line range** covering both the unit's `*_BLOCK_INFO` object and
     its `*_LESSONS` array together (block info first, lessons second — that's the order
@@ -251,9 +254,9 @@ growing. This mirrors exactly what was done for Soccer, Rippa, Teeball, Cricket,
 | hockey | `HOCKEY_LESSONS` | `HOCKEY_BLOCK_INFO` | ✅ done — `data/hockey_data.js` |
 | volleyball | `VOLLEYBALL_LESSONS` | `VOLLEYBALL_BLOCK_INFO` | ✅ done — `data/volleyball_data.js` |
 | tennis | `TENNIS_LESSONS` | `TENNIS_BLOCK_INFO` | ✅ done — `data/tennis_data.js` |
-| teamplay | `TEAMPLAY_LESSONS` | `TEAMPLAY_BLOCK_INFO` | not started — inline in HTML |
-| strategy | `STRATEGY_LESSONS` | `STRATEGY_BLOCK_INFO` | not started — inline in HTML |
-| handeye | `HANDEYE_LESSONS` | `HANDEYE_BLOCK_INFO` | not started — inline in HTML |
+| teamplay | `TEAMPLAY_LESSONS` | `TEAMPLAY_BLOCK_INFO` | ✅ done — `data/teamplay_data.js` |
+| strategy | `STRATEGY_LESSONS` | `STRATEGY_BLOCK_INFO` | ✅ done — `data/strategy_data.js` |
+| handeye | `HANDEYE_LESSONS` | `HANDEYE_BLOCK_INFO` | ✅ done — `data/handeye_data.js` |
 
 Each unit has 20 lessons × (3 Skill Games + 1 Big Game) = 80 activities, plus 4 blocks ×
 2 (Warm-Up + Warm-Down) = 8 routines. Total new content items per unit: 88.
